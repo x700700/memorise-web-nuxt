@@ -7,7 +7,6 @@
 <script>
 
 export default {
-  name: 'Trainings',
   validate({ params }) {
     return !isNaN(+params.id);
   },

@@ -1,16 +1,47 @@
+
 <template>
-  <div class="container">
-    <trainings />
+  <div class="index-router">
+    <p>memoRise</p>
+    <br>
+    <div>
+      Route to:
+      <ul>
+        <li>
+          <NuxtLink to="/">
+            Root
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/logon">
+            Logon
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/trainings">
+            Trainings List
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/trainings/123">
+            Edit Training
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/trainings/123/practice">
+            Practice Training
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="content">
+      <NuxtChild :key="$route.params.id" />
+    </div>
   </div>
 </template>
 
 <script>
-
-import Trainings from './trainings';
 export default {
-  components: {
-    Trainings
-  },
   head() {
     return {
       title: 'memoRise',
@@ -20,16 +51,23 @@ export default {
       ]
     }
   },
+  mounted() {
+    if (this.$route.fullPath === '/') {
+      this.$router.push('/logon');
+    }
+  },
 }
 </script>
+
 <style>
   body {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   }
 </style>
-<style lang="scss" scoped>
-.container {
 
+<style lang="scss" scoped>
+.index-router {
+  color: cornflowerblue;
 }
 </style>
