@@ -1,13 +1,11 @@
 <template>
-  <div class="training-container">
+  <div class="training-edit-route">
     Edit Training id: {{ id }}
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Trainings',
   validate({ params }) {
     return !isNaN(+params.id);
   },
@@ -20,8 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.training-container {
+.training-edit-route {
   font-size: 22px;
-  color: darkred;
 }
 </style>

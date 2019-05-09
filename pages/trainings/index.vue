@@ -1,5 +1,5 @@
 <template>
-  <div class="trainings-list-container">
+  <div class="trainings-list-route">
     Trainings List
   </div>
 </template>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.trainings-list-container {
+.trainings-list-route {
   font-size: 22px;
 }
 </style>

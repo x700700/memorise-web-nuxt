@@ -1,5 +1,5 @@
 <template>
-  <div class="training-container">
+  <div class="training-practice-route">
     Practice Training id: {{ id }}
   </div>
 </template>
@@ -20,8 +20,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.training-container {
+.training-practice-route {
   font-size: 22px;
-  color: darkred;
 }
 </style>
