@@ -1,17 +1,17 @@
 <template>
   <section class="container">
     <div>
-      <CalTable />
+      <p>memoRise</p>
+      <br>
+
     </div>
   </section>
 </template>
 
 <script>
-import CalTable from '~/components/Cal/CalTable.vue'
 
 export default {
   components: {
-    CalTable,
   },
   head() {
     return {
@@ -27,12 +27,8 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  // margin: 0 auto;
+  // min-height: 100vh;
 
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
   'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
