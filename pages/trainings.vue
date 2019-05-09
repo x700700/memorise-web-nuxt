@@ -1,15 +1,23 @@
 <template>
   <div class="container">
-    <trainings />
+    <p>memoRise</p>
+    <br>
+    <div>
+    Route to:
+      <NuxtLink to="/trainings/123">
+        Trainings
+      </NuxtLink>
+    </div>
+    <div class="content">
+      <NuxtChild />
+    </div>
   </div>
 </template>
 
 <script>
 
-import Trainings from './trainings';
 export default {
   components: {
-    Trainings
   },
   head() {
     return {
@@ -31,5 +39,8 @@ export default {
 <style lang="scss" scoped>
 .container {
 
+  .content {
+    display: inline-block;
+  }
 }
 </style>
