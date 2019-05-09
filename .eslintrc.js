@@ -31,6 +31,7 @@ module.exports = {
     "object-curly-newline": "off",
     "no-else-return": "off",
     "arrow-body-style": "off",
+    "no-console": "off",
 
     "semi": "off",
     "comma-dangle": [

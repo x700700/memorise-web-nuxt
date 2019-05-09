@@ -1,12 +1,16 @@
 <template>
   <div class="trainings-list-route">
-    Trainings List
+    <TrainingsList />
   </div>
 </template>
 
 <script>
+import TrainingsList from '../../../components/TrainingsList';
 
 export default {
+  components: {
+    TrainingsList,
+  },
 }
 </script>
 
