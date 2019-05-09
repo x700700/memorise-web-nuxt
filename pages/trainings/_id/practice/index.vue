@@ -1,6 +1,6 @@
 <template>
   <div class="training-container">
-    Training id: {{ id }}
+    Practice Training id: {{ id }}
   </div>
 </template>
 

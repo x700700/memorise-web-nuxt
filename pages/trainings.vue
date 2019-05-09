@@ -4,10 +4,25 @@
     <br>
     <div>
     Route to:
-      <NuxtLink to="/trainings/123">
-        Trainings
-      </NuxtLink>
+      <ul>
+        <li>
+          <NuxtLink to="/trainings">
+            Trainings List
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/trainings/123">
+            Edit Training
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/trainings/123/practice">
+            Practice Training
+          </NuxtLink>
+        </li>
+      </ul>
     </div>
+    <br />
     <div class="content">
       <NuxtChild />
     </div>
