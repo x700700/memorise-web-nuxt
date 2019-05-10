@@ -1,8 +1,7 @@
 
 <template>
   <div class="index-router">
-    <p>memoRise</p>
-    <br>
+    <MemoHeader />
     <div>
       Route to:
       <ul>
@@ -41,7 +40,11 @@
 </template>
 
 <script>
+import MemoHeader from '../components/Page/MemoHeader';
 export default {
+  components: {
+    MemoHeader
+  },
   head() {
     return {
       title: 'memoRise',
@@ -52,22 +55,27 @@ export default {
     }
   },
   mounted() {
+    /*
     if (this.$route.fullPath === '/') {
       this.$router.push('/logon');
     }
+     */
   },
 }
 </script>
 
-<style>
+<style lang="less">
+  @import '../global/colors.less';
+
   body {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    color: @txt-dark;
   }
 </style>
 
 <style lang="scss" scoped>
 .index-router {
-  color: cornflowerblue;
 }
 </style>
