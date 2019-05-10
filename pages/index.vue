@@ -75,7 +75,7 @@ export default {
   }
 </style>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .index-router {
 }
 </style>
