@@ -51,14 +51,18 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: @margin;
+
+  .header-title {
+    margin-left: @margin;
+  }
 
   div {
     color: @grey-lightest;
     margin-right: 2rem;
 
 
-    @media only screen and (max-width: @max-mobile-width) {
+    @media (max-width: @max-mobile-width) {
       margin-right: 1rem;
       font-size: 12px;
     }
@@ -70,9 +74,6 @@ export default {
         color: @txt-light;
       }
     }
-  }
-  .header-title {
-
   }
 }
 </style>
