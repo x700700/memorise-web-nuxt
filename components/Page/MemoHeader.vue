@@ -62,6 +62,14 @@ export default {
       margin-right: 1rem;
       font-size: 12px;
     }
+
+    a {
+      text-decoration: none;
+
+      &:visited {
+        color: @txt-light;
+      }
+    }
   }
   .header-title {
 
