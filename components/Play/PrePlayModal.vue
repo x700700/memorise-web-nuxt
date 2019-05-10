@@ -1,23 +1,14 @@
 <template>
   <div class="preplay-modal-container">
-    <Modal class="preplay-modal"
-           :width="width"
-           :hide="!modalMounted"
-    >
-      <div class="center">
-        Success
-      </div>
-    </Modal>
+    <modal name="hello-world">
+      Hello Modal..!
+    </modal>
   </div>
 </template>
 
 <script>
-import Modal from '../tools/Modal';
 
 export default {
-  component: {
-    Modal,
-  },
   data() {
     return {
       height: '392px',
