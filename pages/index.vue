@@ -2,37 +2,6 @@
 <template>
   <div class="index-router">
     <MemoHeader />
-    <div>
-      Route to:
-      <ul>
-        <li>
-          <NuxtLink to="/">
-            Root
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/logon">
-            Logon
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/trainings">
-            Trainings List
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/trainings/123">
-            Edit Training
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="/trainings/123/practice">
-            Practice Training
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
-    <br />
     <div class="content">
       <NuxtChild :key="$route.params.id" />
     </div>

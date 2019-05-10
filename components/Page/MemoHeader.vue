@@ -3,6 +3,31 @@
     <div class="header-title">
       memoRise
     </div>
+    <div>
+      <NuxtLink to="/">
+        Root
+      </NuxtLink>
+    </div>
+    <div>
+      <NuxtLink to="/logon">
+        Logon
+      </NuxtLink>
+    </div>
+    <div>
+      <NuxtLink to="/trainings">
+        Trainings
+      </NuxtLink>
+    </div>
+    <div>
+      <NuxtLink to="/trainings/123">
+        Edit
+      </NuxtLink>
+    </div>
+    <div>
+      <NuxtLink to="/trainings/123/practice">
+        Practice
+      </NuxtLink>
+    </div>
   </div>
 </template>
 
@@ -28,8 +53,18 @@ export default {
   align-items: center;
   margin-bottom: 0.5rem;
 
-  .header-title {
+  div {
     color: @grey-lightest;
+    margin-right: 2rem;
+
+
+    @media only screen and (max-width: 600px) {
+      margin-right: 1rem;
+      font-size: 12px;
+    }
+  }
+  .header-title {
+
   }
 }
 </style>
