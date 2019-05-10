@@ -4,9 +4,41 @@
     <br />
     <br />
     <div @click="btnClicked">
-      <p>Open Modal</p>
+      <span>Open Modal</span>
     </div>
     <br />
+    <p>bbb</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p><p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p><p>a</p><p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>a</p>
+    <p>bbb</p>
+    <p>a</p>
+
+
+
     <MyModal name="meo-modal" header="Meo Modalo" />
   </div>
 </template>
@@ -32,7 +64,7 @@ export default {
 .trainings-list-container {
   font-size: 22px;
 
-  p {
+  span {
     cursor: pointer;
   }
 }

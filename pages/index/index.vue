@@ -11,6 +11,5 @@ export default {
 
 <style lang="less" scoped>
 .root-page {
-
 }
 </style>

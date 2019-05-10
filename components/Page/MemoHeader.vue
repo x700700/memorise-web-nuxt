@@ -1,32 +1,34 @@
 <template>
   <div class="memo-header">
-    <div class="header-title">
-      memoRise
-    </div>
-    <div>
-      <NuxtLink to="/">
-        Root
-      </NuxtLink>
-    </div>
-    <div>
-      <NuxtLink to="/logon">
-        Logon
-      </NuxtLink>
-    </div>
-    <div>
-      <NuxtLink to="/trainings">
-        Trainings
-      </NuxtLink>
-    </div>
-    <div>
-      <NuxtLink to="/trainings/123">
-        Edit
-      </NuxtLink>
-    </div>
-    <div>
-      <NuxtLink to="/trainings/123/practice">
-        Practice
-      </NuxtLink>
+    <div class="header-container">
+      <div class="header-title">
+        memoRise
+      </div>
+      <div>
+        <NuxtLink to="/">
+          Root
+        </NuxtLink>
+      </div>
+      <div>
+        <NuxtLink to="/logon">
+          Logon
+        </NuxtLink>
+      </div>
+      <div>
+        <NuxtLink to="/trainings">
+          Trainings
+        </NuxtLink>
+      </div>
+      <div>
+        <NuxtLink to="/trainings/123">
+          Edit
+        </NuxtLink>
+      </div>
+      <div>
+        <NuxtLink to="/trainings/123/practice">
+          Practice
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -46,32 +48,33 @@ export default {
 .memo-header {
   @import '../../global/global-vars';
 
-  background-color: @grey-dark;
-  height: 2rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: @margin;
+  .header-container {
+    background-color: @grey-dark;
+    height: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-  .header-title {
-    margin-left: @margin;
-  }
-
-  div {
-    color: @grey-lightest;
-    margin-right: 2rem;
-
-
-    @media (max-width: @max-mobile-width) {
-      margin-right: 1rem;
-      font-size: 12px;
+    .header-title {
+      margin-left: @margin;
     }
 
-    a {
-      text-decoration: none;
+    div {
+      color: @grey-lightest;
+      margin-right: 2rem;
 
-      &:visited {
-        color: @txt-light;
+
+      @media (max-width: @max-mobile-width) {
+        margin-right: 1rem;
+        font-size: 12px;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:visited {
+          color: @txt-light;
+        }
       }
     }
   }
