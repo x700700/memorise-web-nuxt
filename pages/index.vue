@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="less">
-  @import '../global/colors.less';
+  @import '../global/global-vars.less';
 
   body {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,

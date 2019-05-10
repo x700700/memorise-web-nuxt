@@ -44,7 +44,7 @@ export default {
 <style lang="less" scoped>
 
 .memo-header {
-  @import '../../global/colors';
+  @import '../../global/global-vars';
 
   background-color: @grey-dark;
   height: 2rem;
@@ -58,7 +58,7 @@ export default {
     margin-right: 2rem;
 
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: @max-mobile-width) {
       margin-right: 1rem;
       font-size: 12px;
     }
