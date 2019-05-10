@@ -7,22 +7,22 @@
       <p>Open Modal</p>
     </div>
     <br />
-    <modal name="hello-world">
-      Hello Amigo..!
-    </modal>
+    <MyModal name="meo-modal" header="Meo Modalo" />
   </div>
 </template>
 
 <script>
+import MyModal from './tools/MyModal';
 
 export default {
   components: {
+    MyModal,
   },
   methods: {
     btnClicked() {
       // eslint-disable-next-line no-console
       console.warn('clicked');
-      this.$modal.show('hello-world');
+      this.$modal.show('meo-modal');
     },
   },
 }
