@@ -9,7 +9,9 @@
           <CardRotateBtn :rotate-card="rotateCard" />
         </div>
         <div class="practice-card">
-          <Card :card-front="cardFront" :rotate-card="rotateCard" />
+          <Card :q="q" :a="a"
+                :card-front="cardFront" :rotate-card="rotateCard"
+                :next-card="nextCardNow" />
         </div>
         <div class="buttons-containr">
           <CardSucessBtns :next-card="nextCard" />
@@ -24,12 +26,12 @@ import Card from './Play/Card';
 import CardRotateBtn from './Play/CardRotateBtn';
 import CardSucessBtns from './Play/CardSucessBtns';
 
-/*
+
 const training = [
   { q: 'Cat', a: 'חתול' },
   { q: 'Home', a: 'בית' },
 ];
- */
+
 
 export default {
   components: {
@@ -44,14 +46,29 @@ export default {
     },
   },
   data: () => ({
+    cardNumber: 0,
     cardFront: true,
+    nextCardNow: false,
   }),
+  computed: {
+    q() {
+      return training[this.cardNumber].q;
+    },
+    a() {
+      return training[this.cardNumber].a;
+    },
+  },
   methods: {
     rotateCard() {
       this.cardFront = !this.cardFront;
     },
     nextCard() {
-      console.warn('next Card')
+      this.nextCardNow = true;
+      this.cardFront = true;
+      setTimeout(() => {
+        this.cardNumber = !this.cardNumber ? 1 : 0;
+        this.nextCardNow = false;
+      }, 600);
     },
   },
 }

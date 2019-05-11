@@ -4,12 +4,12 @@
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
         <div class="card-content">
-          Cat
+          {{ q }}
         </div>
       </div>
       <div class="card-back-container" :style="styleCardBack">
         <div class="card-content">
-          חתול
+          {{ a }}
         </div>
       </div>
     </div>
@@ -26,6 +26,14 @@ export default {
   components: {
   },
   props: {
+    q: {
+      type: String,
+      required: true,
+    },
+    a: {
+      type: String,
+      required: true,
+    },
     cardFront: {
       type: Boolean,
       required: true,
@@ -34,12 +42,31 @@ export default {
       type: Function,
       required: true,
     },
+    nextCard: {
+      type: Boolean,
+      required: true,
+    },
+  },
+  data: () => ({
+    changingCard: false,
+  }),
+  watch: {
+    nextCard() {
+      if (this.nextCard) {
+        console.warn('got nextCard');
+        this.changingCard = true;
+        setTimeout(() => {
+          this.changingCard = false;
+        }, 1200);
+      }
+    },
   },
   computed: {
     styleCardFront() {
       const fontAdjust = 32;
       return {
-        maxWidth: this.cardFront ? '100%' : '0%',
+        maxWidth: this.cardFront && !this.nextCard ? '100%' : '0%',
+        marginLeft: this.changingCard ? '0px' : 'auto',
         fontSize: this.cardFront ? `${fontAdjust}px` : '1px',
         transition: !this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
@@ -48,6 +75,7 @@ export default {
       const fontAdjust = 32;
       return {
         maxWidth: !this.cardFront ? '100%' : '0%',
+        marginLeft: this.changingCard ? '0px' : 'auto',
         fontSize: !this.cardFront ? `${fontAdjust}px` : '1px',
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
