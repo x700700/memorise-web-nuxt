@@ -6,10 +6,10 @@
         <div class="title">
         </div>
         <div class="card-rotate">
-          <CardRotateBtn :rotate-card="rotateCard"/>
+          <CardRotateBtn :rotate-card="rotateCard" />
         </div>
         <div class="practice-card">
-          <Card :cardFront="cardFront" :rotate-card="rotateCard"/>
+          <Card :card-front="cardFront" :rotate-card="rotateCard" />
         </div>
         <div class="buttons-containr">
         </div>

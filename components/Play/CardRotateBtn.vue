@@ -2,6 +2,7 @@
   <div class="card-rotate-btn-container">
     <div class="btn-container" @click="rotateCard()">
       Rotate
+      <!-- <img class="rotate-icon" src="~assets/man-forgot.svg" width="25px" height="25px" />-->
     </div>
   </div>
 </template>
@@ -30,6 +31,12 @@ export default {
     .btn-container {
       text-align: center;
       cursor: pointer;
+
+      .rotate-icon {
+        width: 25px;
+        height: 25px;
+        color: orangered;
+      }
     }
   }
 </style>

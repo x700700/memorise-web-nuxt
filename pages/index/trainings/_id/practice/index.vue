@@ -1,6 +1,6 @@
 <template>
   <div class="training-practice-route">
-    <Practice :id="id"/>
+    <Practice :id="id" />
   </div>
 </template>
 

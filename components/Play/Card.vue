@@ -1,6 +1,6 @@
 <template>
   <div class="card-container" @click="rotateCard()">
-    <img src="/card-back-2.png" class="card-bg">
+    <img src="/card-back.png" class="card-bg">
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
         <div class="card-content">
