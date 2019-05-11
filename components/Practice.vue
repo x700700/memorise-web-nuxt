@@ -1,5 +1,6 @@
 <template>
   <div class="practice-container">
+    <p>Practice Training id: {{ id }}</p>
     <div class="practice-playground">
       <div class="practice-cloumn">
         <div class="title">
@@ -18,6 +19,12 @@
 <script>
 
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true,
+    },
+  },
 
 }
 </script>
@@ -27,6 +34,7 @@ export default {
 
   .practice-container {
     width: fit-content;
+    margin: 0 auto;
 
     .practice-playground {
       .practice-cloumn {

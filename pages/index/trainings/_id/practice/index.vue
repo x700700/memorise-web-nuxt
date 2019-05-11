@@ -1,7 +1,6 @@
 <template>
   <div class="training-practice-route">
-    <p>Practice Training id: {{ id }}</p>
-    <Practice />
+    <Practice :id="id"/>
   </div>
 </template>
 
