@@ -15,6 +15,8 @@
 
 <script>
 
+const transitionWidth = 'max-width 0.3s ease-in-out';
+
 export default {
   components: {
   },
@@ -30,15 +32,19 @@ export default {
   },
   computed: {
     styleCardFront() {
+      const fontAdjust = 32;
       return {
         maxWidth: this.cardFront ? '100%' : '0%',
-        transition: !this.cardFront ? 'max-width 0.3s ease-in-out' : 'max-width 0.3s ease-in-out',
+        fontSize: this.cardFront ? `${fontAdjust}px` : '1px',
+        transition: !this.cardFront ? `${transitionWidth}, font-size 0.3s linear` : `${transitionWidth} 0.25s, font-size 0.5s linear`,
       };
     },
     styleCardBack() {
+      const fontAdjust = 32;
       return {
         maxWidth: !this.cardFront ? '100%' : '0%',
-        transition: this.cardFront ? 'max-width 0.3s ease-in-out' : 'max-width 0.3s ease-in-out',
+        fontSize: !this.cardFront ? `${fontAdjust}px` : '1px',
+        transition: this.cardFront ? `${transitionWidth}, font-size 0.3s linear` : `${transitionWidth} 0.25s, font-size 0.5s linear`,
       };
     },
   },
@@ -54,6 +60,7 @@ export default {
     .card-front-container, .card-back-container {
       height: 100%;
       background-color: @grey-lightest;
+      margin: 0 auto;
       overflow: hidden;
       font-size: 32px;
       display: flex;
@@ -63,9 +70,6 @@ export default {
         text-align: center;
         align-self: center;
       }
-    }
-    .card-front-container {
-      margin-left: auto;
     }
     .card-back-container {
       transform: translateY(-100%);
