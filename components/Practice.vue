@@ -6,8 +6,10 @@
         <div class="title">
         </div>
         <div class="card-rotate">
+          <CardRotateBtn />
         </div>
-        <div class="card-container">
+        <div class="practice-card">
+          <Card />
         </div>
         <div class="buttons-containr">
         </div>
@@ -17,8 +19,14 @@
 </template>
 
 <script>
+import Card from './Play/Card';
+import CardRotateBtn from './Play/CardRotateBtn';
 
 export default {
+  components: {
+    CardRotateBtn,
+    Card
+  },
   props: {
     id: {
       type: String,
@@ -49,9 +57,9 @@ export default {
         .card-rotate {
           flex-grow: 1;
           height: 2rem;
-          background-color: cornflowerblue;
+          // background-color: cornflowerblue;
         }
-        .card-container {
+        .practice-card {
           height: 326px;
           width: 326px;
           border: 1px solid @grey-darkest;

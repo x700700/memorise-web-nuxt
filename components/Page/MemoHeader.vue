@@ -44,40 +44,40 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
-.memo-header {
   @import '../../global/global-vars';
 
-  .header-container {
-    background-color: @grey-dark;
-    height: 2rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  .memo-header {
 
-    .header-title {
-      margin-left: @margin;
-    }
+    .header-container {
+      background-color: @grey-dark;
+      height: 2rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-    div {
-      color: @grey-lightest;
-      margin-right: 2rem;
-
-
-      @media (max-width: @max-mobile-width) {
-        margin-right: 1rem;
-        font-size: 12px;
+      .header-title {
+        margin-left: @margin;
       }
 
-      a {
-        color: @txt-light;
-        text-decoration: none;
+      div {
+        color: @grey-lightest;
+        margin-right: 2rem;
 
-        &:visited {
+
+        @media (max-width: @max-mobile-width) {
+          margin-right: 1rem;
+          font-size: 12px;
+        }
+
+        a {
           color: @txt-light;
+          text-decoration: none;
+
+          &:visited {
+            color: @txt-light;
+          }
         }
       }
     }
   }
-}
 </style>
