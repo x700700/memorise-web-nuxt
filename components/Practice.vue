@@ -11,10 +11,10 @@
         <div class="practice-card">
           <Card :q="q" :a="a"
                 :card-front="cardFront" :rotate-card="rotateCard"
-                :next-card="nextCardNow" :changing-card="changingCard" />
+                :next-card-transition-width="nextCardTransitionWidth" :next-card-transition-full="nextCardTransitionFull" />
         </div>
         <div class="buttons-containr">
-          <CardSucessBtns :next-card="nextCard" :disable="this.changingCard" />
+          <CardSucessBtns :next-card="nextCard" :disable="nextCardTransitionFull" />
         </div>
       </div>
     </div>
@@ -48,8 +48,8 @@ export default {
   data: () => ({
     cardNumber: 0,
     cardFront: true,
-    nextCardNow: false,
-    changingCard: false,
+    nextCardTransitionWidth: false,
+    nextCardTransitionFull: false,
   }),
   computed: {
     q() {
@@ -64,16 +64,16 @@ export default {
       this.cardFront = !this.cardFront;
     },
     nextCard() {
-      this.changingCard = true;
-      this.nextCardNow = true;
+      this.nextCardTransitionFull = true;
+      this.nextCardTransitionWidth = true;
       this.cardFront = true;
 
       // make width css transition work
       setTimeout(() => {
         this.cardNumber = !this.cardNumber ? 1 : 0;
-        this.nextCardNow = false;
+        this.nextCardTransitionWidth = false;
         setTimeout(() => {
-          this.changingCard = false;
+          this.nextCardTransitionFull = false;
         }, 500);
       }, 500);
     },

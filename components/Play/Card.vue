@@ -42,11 +42,11 @@ export default {
       type: Function,
       required: true,
     },
-    nextCard: {
+    nextCardTransitionWidth: {
       type: Boolean,
       required: true,
     },
-    changingCard: {
+    nextCardTransitionFull: {
       type: Boolean,
       required: true,
     }
@@ -58,8 +58,8 @@ export default {
     styleCardFront() {
       const fontAdjust = 32;
       return {
-        maxWidth: this.cardFront && !this.nextCard ? '100%' : '0%',
-        marginLeft: this.changingCard ? '0px' : 'auto',
+        maxWidth: this.cardFront && !this.nextCardTransitionWidth ? '100%' : '0%',
+        marginLeft: this.nextCardTransitionFull ? '0px' : 'auto',
         fontSize: this.cardFront ? `${fontAdjust}px` : '1px',
         transition: !this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
@@ -68,8 +68,8 @@ export default {
       const fontAdjust = 32;
       return {
         maxWidth: !this.cardFront ? '100%' : '0%',
-        marginLeft: this.changingCard ? '0px' : 'auto',
-        fontSize: !this.cardFront || this.changingCard ? `${fontAdjust}px` : '1px',
+        marginLeft: this.nextCardTransitionFull ? '0px' : 'auto',
+        fontSize: !this.cardFront || this.nextCardTransitionFull ? `${fontAdjust}px` : '1px',
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
     },
