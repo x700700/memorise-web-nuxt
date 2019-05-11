@@ -2,7 +2,7 @@
   <div class="card-rotate-btn-container">
     <div class="btn-container" @click="rotateCard()">
       Rotate
-      <!-- <img class="rotate-icon" src="~assets/man-forgot.svg" width="25px" height="25px" />-->
+       <img class="rotate-icon" src="~assets/user-placeholder.svg" width="25px" height="25px" />
     </div>
   </div>
 </template>

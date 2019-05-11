@@ -67,7 +67,7 @@ export default {
       width: 324px;
       height: 324px;
       position: absolute;
-      opacity: 0.25;
+      opacity: 0.15;
     }
 
     .front-back-container {
