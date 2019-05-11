@@ -18,7 +18,7 @@
 
 <script>
 
-const transitionWidth = 'max-width 0.3s ease-in-out';
+const transitionWidth = 'max-width 0.2s ease-in-out';
 const transitionFontSize = 'font-size 0.3s linear';
 const transitionFontSizeSlower = 'font-size 0.5s linear';
 
@@ -53,11 +53,12 @@ export default {
   watch: {
     nextCard() {
       if (this.nextCard) {
-        console.warn('got nextCard');
         this.changingCard = true;
+
+        // let width css transition be completed before setting back to false
         setTimeout(() => {
           this.changingCard = false;
-        }, 1200);
+        }, 1000);
       }
     },
   },
@@ -76,7 +77,7 @@ export default {
       return {
         maxWidth: !this.cardFront ? '100%' : '0%',
         marginLeft: this.changingCard ? '0px' : 'auto',
-        fontSize: !this.cardFront ? `${fontAdjust}px` : '1px',
+        fontSize: !this.cardFront || this.changingCard ? `${fontAdjust}px` : '1px',
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
     },
@@ -90,6 +91,11 @@ export default {
   .card-container {
     height: 100%;
     cursor: pointer;
+    user-select: none;
+
+    &:focus, &:active {
+      outline: none;
+    }
 
     .card-bg {
       width: 324px;
@@ -115,6 +121,10 @@ export default {
           width: 100%;
           text-align: center;
           align-self: center;
+
+          &:focus, &:active {
+            outline: 0;
+          }
         }
       }
 

@@ -65,10 +65,12 @@ export default {
     nextCard() {
       this.nextCardNow = true;
       this.cardFront = true;
+
+      // make width css transition work
       setTimeout(() => {
         this.cardNumber = !this.cardNumber ? 1 : 0;
         this.nextCardNow = false;
-      }, 600);
+      }, 500);
     },
   },
 }
@@ -100,6 +102,10 @@ export default {
           height: 326px;
           width: 326px;
           border: 1px solid @grey-darkest;
+
+          &:focus, &:active {
+            outline: none;
+          }
         }
         .buttons-containr {
           flex-grow: 1;
