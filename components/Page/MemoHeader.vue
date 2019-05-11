@@ -70,6 +70,7 @@ export default {
       }
 
       a {
+        color: @txt-light;
         text-decoration: none;
 
         &:visited {
