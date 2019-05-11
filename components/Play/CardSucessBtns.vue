@@ -1,6 +1,6 @@
 <template>
   <div class="card-sucess-btns">
-    <div class="btn-container" @click="nextCard()">
+    <div class="btn-container" :style="styleBtn" @click="nextCard()">
       Next
     </div>
   </div>
@@ -16,8 +16,17 @@ export default {
       type: Function,
       required: true,
     },
+    disable: {
+      type: Boolean,
+      required: true,
+    },
   },
-  methods: {
+  computed: {
+    styleBtn() {
+      return {
+        pointerEvents: this.disable ? 'none' : 'auto'
+      };
+    },
   },
 }
 </script>
@@ -30,7 +39,6 @@ export default {
     .btn-container {
       text-align: center;
       cursor: pointer;
-
     }
   }
 </style>

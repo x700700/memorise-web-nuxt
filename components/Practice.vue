@@ -11,10 +11,10 @@
         <div class="practice-card">
           <Card :q="q" :a="a"
                 :card-front="cardFront" :rotate-card="rotateCard"
-                :next-card="nextCardNow" />
+                :next-card="nextCardNow" :changing-card="changingCard" />
         </div>
         <div class="buttons-containr">
-          <CardSucessBtns :next-card="nextCard" />
+          <CardSucessBtns :next-card="nextCard" :disable="this.changingCard" />
         </div>
       </div>
     </div>
@@ -49,6 +49,7 @@ export default {
     cardNumber: 0,
     cardFront: true,
     nextCardNow: false,
+    changingCard: false,
   }),
   computed: {
     q() {
@@ -63,6 +64,7 @@ export default {
       this.cardFront = !this.cardFront;
     },
     nextCard() {
+      this.changingCard = true;
       this.nextCardNow = true;
       this.cardFront = true;
 
@@ -70,6 +72,9 @@ export default {
       setTimeout(() => {
         this.cardNumber = !this.cardNumber ? 1 : 0;
         this.nextCardNow = false;
+        setTimeout(() => {
+          this.changingCard = false;
+        }, 500);
       }, 500);
     },
   },

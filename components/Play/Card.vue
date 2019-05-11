@@ -46,22 +46,14 @@ export default {
       type: Boolean,
       required: true,
     },
+    changingCard: {
+      type: Boolean,
+      required: true,
+    }
   },
   data: () => ({
-    changingCard: false,
-  }),
-  watch: {
-    nextCard() {
-      if (this.nextCard) {
-        this.changingCard = true;
 
-        // let width css transition be completed before setting back to false
-        setTimeout(() => {
-          this.changingCard = false;
-        }, 1000);
-      }
-    },
-  },
+  }),
   computed: {
     styleCardFront() {
       const fontAdjust = 32;
