@@ -5,7 +5,7 @@
         Cat
       </div>
     </div>
-    <div v-if="!cardFront" class="card-back-container" :style="styleCardBack">
+    <div class="card-back-container" :style="styleCardBack">
       <div class="card-content">
         חתול
       </div>
@@ -32,15 +32,13 @@ export default {
     styleCardFront() {
       return {
         maxWidth: this.cardFront ? '100%' : '0%',
-        opacity: this.cardFront ? 1 : 0,
-        transition: !this.cardFront ? 'max-width 0.3s ease-in-out, opacity 0s linear 0.2s' : 'max-width 0.3s ease-in-out, opacity 0s linear 0.1s',
+        transition: !this.cardFront ? 'max-width 0.3s ease-in-out' : 'max-width 0.3s ease-in-out',
       };
     },
     styleCardBack() {
       return {
         maxWidth: !this.cardFront ? '100%' : '0%',
-        opacity: !this.cardFront ? 1 : 0,
-        transition: this.cardFront ? 'max-width 0.3s ease-in-out, opacity 0s linear 0.2s' : 'max-width 0.3s ease-in-out, opacity 0s linear 0.1s',
+        transition: this.cardFront ? 'max-width 0.3s ease-in-out' : 'max-width 0.3s ease-in-out',
       };
     },
   },
@@ -56,6 +54,7 @@ export default {
     .card-front-container, .card-back-container {
       height: 100%;
       background-color: @grey-lightest;
+      overflow: hidden;
       font-size: 32px;
       display: flex;
 
@@ -69,7 +68,7 @@ export default {
       margin-left: auto;
     }
     .card-back-container {
-      // transform: translateY(-100%);
+      transform: translateY(-100%);
       background-color: @card-back-bg;
     }
   }
