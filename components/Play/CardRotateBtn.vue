@@ -1,6 +1,6 @@
 <template>
   <div class="card-rotate-btn-container">
-    <div class="btn-container">
+    <div class="btn-container" @click="rotateCard()">
       Rotate
     </div>
   </div>
@@ -10,6 +10,12 @@
 
 export default {
   components: {
+  },
+  props: {
+    rotateCard: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
   },
@@ -23,6 +29,7 @@ export default {
 
     .btn-container {
       text-align: center;
+      cursor: pointer;
     }
   }
 </style>

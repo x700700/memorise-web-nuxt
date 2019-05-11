@@ -6,10 +6,10 @@
         <div class="title">
         </div>
         <div class="card-rotate">
-          <CardRotateBtn />
+          <CardRotateBtn :rotate-card="rotateCard"/>
         </div>
         <div class="practice-card">
-          <Card />
+          <Card :cardFront="cardFront" :rotate-card="rotateCard"/>
         </div>
         <div class="buttons-containr">
         </div>
@@ -33,7 +33,14 @@ export default {
       required: true,
     },
   },
-
+  data: () => ({
+    cardFront: true,
+  }),
+  methods: {
+    rotateCard() {
+      this.cardFront = !this.cardFront;
+    },
+  },
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="card-container">
-    Cat
+  <div class="card-container" @click="rotateCard()">
+    {{ cardFront }}
   </div>
 </template>
 
@@ -8,6 +8,16 @@
 
 export default {
   components: {
+  },
+  props: {
+    cardFront: {
+      type: Boolean,
+      required: true,
+    },
+    rotateCard: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
   },
