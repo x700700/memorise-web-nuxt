@@ -30,6 +30,8 @@ import CardSucessBtns from './Play/CardSucessBtns';
 const training = [
   { q: 'Cat', a: 'חתול' },
   { q: 'Home', a: 'בית' },
+  { q: 'Hirshfeld', a: 'שדה צבאים' },
+  { q: 'Guy Weiss', a: 'לך תדע' },
 ];
 
 
@@ -70,7 +72,8 @@ export default {
 
       // make width css transition work
       setTimeout(() => {
-        this.cardNumber = !this.cardNumber ? 1 : 0;
+        this.cardNumber += 1;
+        if (this.cardNumber >= training.length) this.cardNumber = 0;
         this.nextCardTransitionWidth = false;
         setTimeout(() => {
           this.nextCardTransitionFull = false;
@@ -89,6 +92,15 @@ export default {
     margin: 0 auto;
 
     .practice-playground {
+      margin-top: 1rem;
+      border: 1px solid @grey-darkest;
+      border-radius: @border-radius;
+
+      @media (max-width: @max-mobile-width) {
+        border: none;
+        border-radius: 0;
+      }
+
       .practice-cloumn {
         display: flex;
         flex-direction: column;
@@ -96,17 +108,24 @@ export default {
         .title {
           flex-grow: 1;
           height: 2rem;
-          background-color: orange;
+          // background-color: orange;
         }
         .card-rotate {
           flex-grow: 1;
           height: 2rem;
+          margin-bottom: 1rem;
           // background-color: cornflowerblue;
         }
         .practice-card {
           height: 326px;
           width: 326px;
           border: 1px solid @grey-darkest;
+          margin: 1rem;
+          // border-radius: @border-radius;
+
+          @media (max-width: @max-mobile-width) {
+            margin: 0;
+          }
 
           &:focus, &:active {
             outline: none;
@@ -115,7 +134,8 @@ export default {
         .buttons-containr {
           flex-grow: 1;
           height: 2rem;
-          background-color: orange;
+          margin-top: 1rem;
+          // background-color: orange;
         }
       }
     }

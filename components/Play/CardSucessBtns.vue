@@ -24,7 +24,8 @@ export default {
   computed: {
     styleBtn() {
       return {
-        pointerEvents: this.disable ? 'none' : 'auto'
+        pointerEvents: this.disable ? 'none' : 'auto',
+        opacity: this.disable ? '0.4' : '1',
       };
     },
   },
