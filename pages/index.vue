@@ -1,9 +1,20 @@
 
 <template>
   <div class="index-router">
-    <MemoHeader />
-    <div class="content">
-      <NuxtChild :key="$route.params.id" />
+    <div class="nav-left">
+      <div class="nav-left-content">
+        Nav Left
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="nav-top">
+        <div class="nav-top-container">
+          <MemoHeader />
+        </div>
+      </div>
+      <div class="content">
+        <NuxtChild :key="$route.params.id" />
+      </div>
     </div>
   </div>
 </template>
@@ -46,7 +57,7 @@ export default {
     color: @txt-dark;
     // height: 100%;
     // min-height: 100%;
-    overflow: hidden;
+    // overflow: hidden;
   }
 </style>
 
@@ -56,16 +67,78 @@ export default {
   .index-router {
     background-color: @grey-lightest;
 
-    .content {
-      max-width: 760px;
-      height: 95.8vh;
-      overflow-y: scroll;
-      background-color: @white;
-      margin: 0 auto 0 auto;
-      padding: @margin;
+    .nav-left {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      vertical-align: baseline;
+      background: transparent;
+      height: 100%;
+
+      .nav-left-content {
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: @left-nav-width;
+        height: 100%;
+        padding: 10px 0 30px 0;
+        background-color: @grey-lightest;
+        color: @txt-dark;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        @media (max-width: @max-mobile-width) {
+          display: none;
+        }
+      }
+    }
+
+    .main-container {
+      margin-left: @left-nav-width;
+      min-width: 358px;
 
       @media (max-width: @max-mobile-width) {
-        max-width: 100%;
+        margin-left: 0;
+      }
+
+      .nav-top {
+        z-index: 11;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        min-width: @max-mobile-width;
+        height: @top-nav-height;
+        padding-left: @left-nav-width;
+        box-sizing: border-box;
+        pointer-events: none;
+
+        @media (max-width: @max-mobile-width) {
+          padding-left: 0;
+        }
+
+        .nav-top-container {
+          pointer-events: auto;
+        }
+      }
+
+      .content {
+        display: block;
+        padding-top: @top-nav-height;
+        padding-bottom: @mid-space;
+        background-color: @white;
+        // max-width: 760px;
+        // height: 95.8vh;
+        // overflow-y: scroll;
+        // margin: 0 auto 0 auto;
+
+        @media (max-width: @max-mobile-width) {
+          max-width: 100%;
+        }
       }
     }
   }

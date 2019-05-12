@@ -50,13 +50,13 @@ export default {
 
     .header-container {
       background-color: @grey-dark;
-      height: 2rem;
+      height: @top-nav-height;
       display: flex;
       flex-direction: row;
       align-items: center;
 
       .header-title {
-        margin-left: @margin;
+        margin-left: @mid-space;
       }
 
       div {

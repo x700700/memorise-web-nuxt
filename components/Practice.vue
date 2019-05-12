@@ -70,6 +70,7 @@ export default {
       this.nextCardTransitionWidth = true;
       this.cardFront = true;
 
+      // Todo - JQuery Slide - get cb when css transition
       // make width css transition work
       setTimeout(() => {
         this.cardNumber += 1;
