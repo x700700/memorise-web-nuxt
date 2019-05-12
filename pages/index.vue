@@ -3,7 +3,6 @@
   <div class="index-router">
     <div class="nav-left">
       <div class="nav-left-content">
-        Nav Left
       </div>
     </div>
     <div class="main-container">
@@ -14,6 +13,10 @@
       </div>
       <div class="content">
         <NuxtChild :key="$route.params.id" />
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-right-content">
       </div>
     </div>
   </div>
@@ -67,7 +70,7 @@ export default {
   .index-router {
     background-color: @grey-lightest;
 
-    .nav-left {
+    .nav-left, .nav-right {
       margin: 0;
       padding: 0;
       border: 0;
@@ -76,10 +79,9 @@ export default {
       background: transparent;
       height: 100%;
 
-      .nav-left-content {
+      .nav-left-content, .nav-right-content {
         position: fixed;
         z-index: 10;
-        left: 0;
         top: 0;
         width: @left-nav-width;
         height: 100%;
@@ -94,14 +96,22 @@ export default {
           display: none;
         }
       }
+      .nav-left-content {
+        left: 0;
+      }
+      .nav-right-content {
+        right: 0;
+      }
     }
 
     .main-container {
       margin-left: @left-nav-width;
+      margin-right: @left-nav-width;
       min-width: 358px;
 
       @media (max-width: @max-mobile-width) {
         margin-left: 0;
+        margin-right: 0;
       }
 
       .nav-top {
@@ -114,11 +124,13 @@ export default {
         min-width: @max-mobile-width;
         height: @top-nav-height;
         padding-left: @left-nav-width;
+        padding-right: @left-nav-width;
         box-sizing: border-box;
         pointer-events: none;
 
         @media (max-width: @max-mobile-width) {
           padding-left: 0;
+          padding-right: 0;
         }
 
         .nav-top-container {
