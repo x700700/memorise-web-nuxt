@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  @import '../../global/global-vars';
+  @import '../../global/vars';
 
   .card-sucess-btns {
 

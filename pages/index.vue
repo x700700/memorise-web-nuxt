@@ -48,7 +48,7 @@ export default {
 </script>
 
 <style lang="less">
-  @import '../global/global-vars.less';
+  @import '../global/vars.less';
 
   html {
     // height: 100%;
@@ -65,7 +65,7 @@ export default {
 </style>
 
 <style lang="less" scoped>
-  @import '../global/global-vars';
+  @import '../global/vars';
 
   .index-router {
     background-color: @grey-lightest;
