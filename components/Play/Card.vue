@@ -103,7 +103,6 @@ export default {
       .card-front-container, .card-back-container {
         height: 100%;
         z-index: 2;
-        background-color: @grey-lightest;
         margin: 0 auto;
         overflow: hidden;
         font-size: 32px;
@@ -120,6 +119,9 @@ export default {
         }
       }
 
+      .card-front-container {
+        background-color: @card-front-bg;
+      }
       .card-back-container {
         transform: translateY(-100%);
         background-color: @card-back-bg;

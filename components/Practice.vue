@@ -91,6 +91,7 @@ export default {
   .practice-container {
     width: fit-content;
     margin: 0 auto;
+    background-color: white;
 
     .practice-playground {
       margin-top: 1rem;

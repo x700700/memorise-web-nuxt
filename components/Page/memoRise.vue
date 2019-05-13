@@ -51,15 +51,16 @@ export default {
   @import '../../global/vars.less';
 
   html {
-    background-color: @txt-light;
-    // height: 100%;
+    background-color: @grey-lighter;
+    height: 100%;
   }
   body {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
     color: @txt-dark;
-    background-color: @txt-light;
+    background-color: @grey-lightest;
+    height: 100%;
   }
 </style>
 
@@ -85,7 +86,7 @@ export default {
         width: @left-nav-width;
         height: 100%;
         padding: 10px 0 30px 0;
-        background-color: @grey-lightest;
+        background-color: @grey-lighter;
         color: @txt-dark;
         box-sizing: border-box;
         display: flex;
@@ -142,11 +143,9 @@ export default {
         display: block;
         padding-top: @top-nav-height;
         padding-bottom: @mid-space;
-        background-color: @white;
+        background-color: @grey-lightest;
+        height: 100%;
         // max-width: 760px;
-        // height: 95.8vh;
-        // overflow-y: scroll;
-        // margin: 0 auto 0 auto;
 
         @media (max-width: @max-mobile-width) {
           padding-top: @top-nav-height-mobile;
