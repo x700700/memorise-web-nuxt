@@ -55,13 +55,17 @@ export default {
       flex-direction: row;
       align-items: center;
 
+      @media (max-width: @max-mobile-width) {
+        height: @top-nav-height-mobile;
+      }
+
       .header-title {
         margin-left: @mid-space;
       }
 
       div {
         color: @grey-lightest;
-        margin-right: 2rem;
+        margin-right: 1.5rem;
 
 
         @media (max-width: @max-mobile-width) {

@@ -129,6 +129,7 @@ export default {
         pointer-events: none;
 
         @media (max-width: @max-mobile-width) {
+          height: @top-nav-height-mobile;
           padding-left: 0;
           padding-right: 0;
         }
@@ -149,6 +150,7 @@ export default {
         // margin: 0 auto 0 auto;
 
         @media (max-width: @max-mobile-width) {
+          padding-top: @top-nav-height-mobile;
           max-width: 100%;
         }
       }
