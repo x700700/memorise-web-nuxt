@@ -52,11 +52,6 @@ export default {
 
   html {
     height: 100%;
-    background-color: @grey-lighter;
-
-    @media (max-width: @max-mobile-width) {
-      background-color: white;
-    }
   }
   body {
     font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
@@ -65,7 +60,7 @@ export default {
     height: 100%;
     min-height: 100%;
     color: @txt-dark;
-    background-color: @grey-lightest;
+    background-color: @body-bg;
 
     @media (max-width: @max-mobile-width) {
       background-color: white;
@@ -94,8 +89,8 @@ export default {
         top: 0;
         width: @left-nav-width;
         height: 100%;
+        background-color: @banners-bg;
         padding: 10px 0 30px 0;
-        background-color: @grey-lighter;
         color: @txt-dark;
         box-sizing: border-box;
         display: flex;

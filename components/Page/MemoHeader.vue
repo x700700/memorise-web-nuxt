@@ -50,6 +50,7 @@ export default {
 
     .header-container {
       background-color: @grey-dark;
+      color: @txt-light;
       height: @top-nav-height;
       display: flex;
       flex-direction: row;
@@ -64,9 +65,7 @@ export default {
       }
 
       div {
-        color: @grey-lightest;
         margin-right: 1.5rem;
-
 
         @media (max-width: @max-mobile-width) {
           margin-right: 1rem;
