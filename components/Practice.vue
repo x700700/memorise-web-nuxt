@@ -1,6 +1,6 @@
 <template>
   <div class="practice-container">
-    <p>Practice Training id: {{ id }}</p>
+    <!--    <p>Practice Training id: {{ id }}</p>-->
     <div class="practice-playground">
       <div class="practice-cloumn">
         <div class="title">
@@ -94,11 +94,12 @@ export default {
     background-color: white;
 
     .practice-playground {
-      margin-top: 1rem;
+      margin-top: 2rem;
       border: 1px solid @grey-darkest;
       border-radius: @border-radius;
 
       @media (max-width: @max-mobile-width) {
+        margin-top: 1rem;
         border: none;
         border-radius: 0;
       }

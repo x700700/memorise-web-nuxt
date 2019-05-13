@@ -83,7 +83,7 @@ export default {
   .card-container {
     height: 100%;
     cursor: pointer;
-    user-select: none;
+    // user-select: none;
 
     &:focus, &:active {
       outline: none;
