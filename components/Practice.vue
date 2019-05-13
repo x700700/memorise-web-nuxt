@@ -22,18 +22,10 @@
 </template>
 
 <script>
+import cardsPeck from '../global/cardsPeck';
 import Card from './Play/Card';
 import CardRotateBtn from './Play/CardRotateBtn';
 import CardSucessBtns from './Play/CardSucessBtns';
-
-
-const training = [
-  { q: 'Cat', a: 'חתול' },
-  { q: 'Home', a: 'בית' },
-  { q: 'Hirshfeld', a: 'שדה צבאים' },
-  { q: 'Guy Weiss', a: 'לך תדע' },
-];
-
 
 export default {
   components: {
@@ -52,14 +44,18 @@ export default {
     cardFront: true,
     nextCardTransitionWidth: false,
     nextCardTransitionFull: false,
+    cardsPack: null,
   }),
   computed: {
     q() {
-      return training[this.cardNumber].q;
+      return this.cardsPack.top().q;
     },
     a() {
-      return training[this.cardNumber].a;
+      return this.cardsPack.top().a;
     },
+  },
+  beforeMount() {
+    this.cardsPack = new cardsPeck();
   },
   methods: {
     rotateCard() {
@@ -74,7 +70,7 @@ export default {
       // make width css transition work
       setTimeout(() => {
         this.cardNumber += 1;
-        if (this.cardNumber >= training.length) this.cardNumber = 0;
+        this.cardsPack.nextCard();
         this.nextCardTransitionWidth = false;
         setTimeout(() => {
           this.nextCardTransitionFull = false;
