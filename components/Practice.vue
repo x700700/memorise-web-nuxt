@@ -4,6 +4,7 @@
     <div class="practice-playground">
       <div class="practice-cloumn">
         <div class="title">
+          <p>Animals Vocabulary</p>
         </div>
         <div class="card-rotate">
           <CardRotateBtn :rotate-card="rotateCard" />
@@ -14,7 +15,7 @@
                 :next-card-transition-width="nextCardTransitionWidth" :next-card-transition-full="nextCardTransitionFull" />
         </div>
         <div class="buttons-containr">
-          <CardSucessBtns :next-card="nextCard" :disable="nextCardTransitionFull" />
+          <CardSucessBtns :done-right="nextCard" :done-wrong="nextCard" :disable="nextCardTransitionFull" />
         </div>
       </div>
     </div>
@@ -106,14 +107,15 @@ export default {
 
         .title {
           flex-grow: 1;
-          height: 2rem;
-          // background-color: orange;
+          font-family: fantasy;
+          font-size: 16px;
+          font-weight: bold;
+          margin-bottom: @mid-space;
+          padding: @mid-space 1rem;
+          padding-left: 0;
         }
         .card-rotate {
           flex-grow: 1;
-          height: 2rem;
-          margin-bottom: 1rem;
-          // background-color: cornflowerblue;
         }
         .practice-card {
           height: 326px;
@@ -132,9 +134,6 @@ export default {
         }
         .buttons-containr {
           flex-grow: 1;
-          height: 2rem;
-          margin-top: 1rem;
-          // background-color: orange;
         }
       }
     }
