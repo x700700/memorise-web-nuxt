@@ -3,7 +3,7 @@
     <div class="btns-row">
       <div class="wrong-container">
         <div class="btn-wrong" :style="styleBtn" @click="doneWrong()">
-          <font-awesome-icon icon="user-times" class="wrong-icon"/>
+          <font-awesome-icon icon="user-times" class="wrong-icon" />
         </div>
       </div>
       <div class="right-container">
