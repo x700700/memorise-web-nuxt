@@ -24,7 +24,7 @@
             ></v-text-field>
             <v-text-field
                 v-model="password"
-                :rules="[rules.required, rules.length(2)]"
+                :rules="[rules.required, rules.length(1)]"
                 class="input-field"
                 box
                 clearable
@@ -38,6 +38,8 @@
           <v-btn
               :disabled="!form"
               :loading="isLoading"
+              @click="login"
+              color="deep-purple lighten-4"
               class="btn-login"
           >Login
           </v-btn>
@@ -65,7 +67,7 @@ export default {
     password: undefined,
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
-      length: len => v => (v || '').length >= len || `Invalid character length, required ${len}`,
+      length: len => v => (v || '').length >= len || `Minimum ${len} characters required`,
       password: v => (v || '').match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/) ||
           'Password must contain an upper case letter, a numeric character, and a special character',
       required: v => !!v || 'This field is required'
@@ -74,9 +76,12 @@ export default {
   computed: {
   },
   mounted() {
-    $('.application--wrap').css('min-height', '0');
+    $('.login-container .application--wrap').css('min-height', '0');
   },
   methods: {
+    login() {
+      console.warn('login', this.username, this.password);
+    },
   },
 }
 </script>
@@ -134,6 +139,7 @@ export default {
           .btn-login {
             margin-top: 1.5rem;
             width: 80%;
+            height: 45px;
             align-self: center;
           }
         }
