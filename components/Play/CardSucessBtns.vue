@@ -61,8 +61,6 @@ export default {
         margin: 1rem 0;
       }
 
-      // Todo - Turn the colors into vars.
-
       .right-container {
         .btn-right {
           background-color: @right-btn-light;
@@ -79,6 +77,9 @@ export default {
             .right-icon {
               color: @right-btn-light;
             }
+          }
+          &:active {
+            background-color: white;
           }
           @media (max-width: @max-mobile-width) {
             background-color: @right-btn-dark;
@@ -107,6 +108,9 @@ export default {
             .wrong-icon {
               color: @wrong-btn-light;
             }
+          }
+          &:active {
+            background-color: white;
           }
           @media (max-width: @max-mobile-width) {
             background-color: @wrong-btn-dark;
