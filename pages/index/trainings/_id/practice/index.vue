@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Practice from '~/components/Practice';
+import Practice from '~/components/Page/Practice';
 
 export default {
   components: {

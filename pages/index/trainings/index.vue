@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import TrainingsList from '~/components/TrainingsList';
+import TrainingsList from '~/components/Page/TrainingsList';
 
 export default {
   components: {

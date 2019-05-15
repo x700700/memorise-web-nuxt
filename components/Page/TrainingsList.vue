@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import MyModal from './tools/MyModal';
+import MyModal from '../tools/MyModal';
 
 export default {
   components: {

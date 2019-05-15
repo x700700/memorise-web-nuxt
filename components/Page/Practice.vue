@@ -23,10 +23,10 @@
 </template>
 
 <script>
-import cardsPeck from '../global/cardsPeck';
-import Card from './Play/Card';
-import CardRotateBtn from './Play/CardRotateBtn';
-import CardSucessBtns from './Play/CardSucessBtns';
+import cardsPeck from '../../global/cardsPeck';
+import Card from '../Play/Card';
+import CardRotateBtn from '../Play/CardRotateBtn';
+import CardSucessBtns from '../Play/CardSucessBtns';
 
 export default {
   components: {
@@ -85,7 +85,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  @import '../global/vars';
+  @import '../../global/vars';
 
   .practice-container {
     width: fit-content;
