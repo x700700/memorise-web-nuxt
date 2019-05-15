@@ -1,15 +1,12 @@
 <template>
   <div class="card-rotate-btn-container">
     <div class="btn-container" @click="rotateCard()">
-      <font-awesome-icon :icon="icon" />
-<!--      <font-awesome-icon class="rotate-icon" icon="camera"/>-->
-<!--       <img class="rotate-icon" src="~assets/user-placeholder.svg" width="25px" height="25px" />-->
+<!--      <font-awesome-icon icon="spinner" />-->
     </div>
   </div>
 </template>
 
 <script>
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   components: {
@@ -19,12 +16,6 @@ export default {
       type: Function,
       required: true,
     },
-  },
-  data: () => ({
-    // Todo - Make icon work
-    icon: faSpinner,
-  }),
-  methods: {
   },
 }
 </script>

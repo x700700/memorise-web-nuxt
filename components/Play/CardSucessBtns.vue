@@ -3,10 +3,12 @@
     <div class="btns-row">
       <div class="wrong-container">
         <div class="btn-wrong" :style="styleBtn" @click="doneWrong()">
+          <font-awesome-icon icon="user-times" class="wrong-icon"/>
         </div>
       </div>
       <div class="right-container">
         <div class="btn-right" :style="styleBtn" @click="doneRight()">
+          <font-awesome-icon icon="user-check" class="right-icon" />
         </div>
       </div>
     </div>
@@ -63,32 +65,56 @@ export default {
 
       .right-container {
         .btn-right {
-          background-color: #bfe2c3;
-          border: 1px solid #66c85b;
+          background-color: @right-btn-light;
+          border: 1px solid @right-btn-dark;
+
+          .right-icon {
+            color: @right-btn-dark;
+          }
 
           &:hover {
-            background-color: #66c85b;
-            border: 1px solid #979797;
+            background-color: @right-btn-dark;
+            border: 1px solid @success-btn-border-color;
+
+            .right-icon {
+              color: @right-btn-light;
+            }
           }
           @media (max-width: @max-mobile-width) {
-            background-color: #66c85b;
-            border: 1px solid #979797;
+            background-color: @right-btn-dark;
+            border: 1px solid @success-btn-border-color;
+
+            .right-icon {
+              color: @right-btn-light;
+            }
           }
         }
       }
 
       .wrong-container {
         .btn-wrong {
-          background-color: #edb8b7;
-          border: 1px solid #e25050;
+          background-color: @wrong-btn-light;
+          border: 1px solid @wrong-btn-dark;
+
+          .wrong-icon {
+            color: @wrong-btn-dark;
+          }
 
           &:hover {
-            background-color: #e25050;
-            border: 1px solid #979797;
+            background-color: @wrong-btn-dark;
+            border: 1px solid @success-btn-border-color;
+
+            .wrong-icon {
+              color: @wrong-btn-light;
+            }
           }
           @media (max-width: @max-mobile-width) {
-            background-color: #e25050;
-            border: 1px solid #979797;
+            background-color: @wrong-btn-dark;
+            border: 1px solid @success-btn-border-color;
+
+            .wrong-icon {
+              color: @wrong-btn-light;
+            }
           }
         }
       }
@@ -98,6 +124,15 @@ export default {
         width: @success-btn-width;
         cursor: pointer;
         transition: background-color 0.3s ease-in-out;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .right-icon, .wrong-icon {
+        font-size: 38px;
+        transition: color 0.3s ease-in-out;
       }
     }
 
