@@ -23,7 +23,7 @@ export default {
   mounted() {
     /*
     if (this.$route.fullPath === '/') {
-      this.$router.push('/logon');
+      this.$router.push('/login');
     }
      */
   },

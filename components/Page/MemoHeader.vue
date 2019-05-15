@@ -10,8 +10,8 @@
         </NuxtLink>
       </div>
       <div>
-        <NuxtLink to="/logon">
-          Logon
+        <NuxtLink to="/login">
+          Login
         </NuxtLink>
       </div>
       <div>

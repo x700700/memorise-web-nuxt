@@ -1,15 +1,15 @@
 <template>
   <div class="login-route">
-    <Logon />
+    <Login />
   </div>
 </template>
 
 <script>
 
-import Logon from '~/components/Page/Logon';
+import Login from '~/components/Page/Login';
 export default {
   components: {
-    Logon,
+    Login,
   }
 }
 </script>
