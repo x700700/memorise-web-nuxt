@@ -125,12 +125,17 @@ export default {
           width: 326px;
           border: 1px solid @grey-darkest;
           margin: 1rem 0;
-          // border-radius: @border-radius;
 
+          &:hover {
+            border: 2px solid @grey-dark;
+          }
           @media (max-width: @max-mobile-width) {
             margin: 0;
-          }
+            &:hover {
+              border: 1px solid @grey-darkest;
+            }
 
+          }
           &:focus, &:active {
             outline: none;
           }
