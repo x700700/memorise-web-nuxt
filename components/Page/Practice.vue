@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import cardsPeck from '../../global/cardsPeck';
+import cardsPack from '../../global/cardsPack';
 import Card from '../Play/Card';
 import CardRotateBtn from '../Play/CardRotateBtn';
 import CardSucessBtns from '../Play/CardSucessBtns';
@@ -56,7 +56,7 @@ export default {
     },
   },
   beforeMount() {
-    this.cardsPack = new cardsPeck();
+    this.cardsPack = new cardsPack();
 
     // Todo - Make 5 second tooltip on the card - 'Click me to flip side' (instead of rotate button)
   },
