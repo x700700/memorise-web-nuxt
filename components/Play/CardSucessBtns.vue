@@ -59,6 +59,8 @@ export default {
         margin: 1rem 0;
       }
 
+      // Todo - Turn the colors into vars.
+
       .right-container {
         .btn-right {
           background-color: #bfe2c3;

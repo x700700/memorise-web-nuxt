@@ -21,6 +21,7 @@ export default {
     },
   },
   data: () => ({
+    // Todo - Make icon work
     icon: faSpinner,
   }),
   methods: {

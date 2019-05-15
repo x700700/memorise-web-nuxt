@@ -57,6 +57,8 @@ export default {
   },
   beforeMount() {
     this.cardsPack = new cardsPeck();
+
+    // Todo - Make 5 second tooltip on the card - 'Click me to flip side' (instead of rotate button)
   },
   methods: {
     rotateCard() {
