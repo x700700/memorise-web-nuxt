@@ -97,7 +97,7 @@ export default {
 
       @media (max-width: @max-mobile-width) {
         margin-top: 1rem;
-        border: none;
+        // border: none;
         border-radius: 0;
       }
 

@@ -63,7 +63,7 @@ export default {
     background-color: @body-bg;
 
     @media (max-width: @max-mobile-width) {
-      background-color: white;
+      // background-color: @white;
     }
   }
 </style>
@@ -152,7 +152,7 @@ export default {
         min-height: 100%;
 
         @media (max-width: @max-mobile-width) {
-          background-color: white;
+          // background-color: @white;
           padding-top: @top-nav-height-mobile;
           max-width: 100%;
         }
