@@ -3,7 +3,27 @@
     <div class="login-playground">
       <div class="login-cloumn">
         <div class="title">
-          <p>Sign-In:</p>
+          <p>Sign-In memoRise</p>
+        </div>
+        <div class="inputs-container">
+          <v-text-field
+              class="input-field"
+              box
+              clearable
+              color="deep-purple"
+              label="Username"
+              style="min-height: 96px"
+          ></v-text-field>
+          <v-text-field
+              class="input-field"
+              box
+              clearable
+              color="deep-purple"
+              counter="6"
+              label="Password"
+              style="min-height: 96px"
+              type="password"
+          ></v-text-field>
         </div>
         <div class="buttons-containr">
         </div>
@@ -52,6 +72,7 @@ export default {
         display: flex;
         flex-direction: column;
         margin: 0 1rem;
+        padding: 1rem;
 
         .title {
           flex-grow: 1;
@@ -60,6 +81,13 @@ export default {
           margin-bottom: @mid-space;
           padding: @mid-space 1rem;
           padding-left: 0;
+        }
+        .inputs-container {
+          width: 20rem;
+
+          .input-field {
+            padding-bottom: 1.5rem;
+          }
         }
         .buttons-containr {
           flex-grow: 1;
