@@ -52,7 +52,7 @@ export default {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-      margin: @mid-space 1rem;
+      margin: @mid-space 0;
       margin-bottom: 1rem;
 
       @media (max-width: @max-mobile-width) {

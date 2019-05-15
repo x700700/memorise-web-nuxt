@@ -104,6 +104,7 @@ export default {
       .practice-cloumn {
         display: flex;
         flex-direction: column;
+        margin: 0 1rem;
 
         .title {
           flex-grow: 1;
@@ -121,7 +122,7 @@ export default {
           height: 326px;
           width: 326px;
           border: 1px solid @grey-darkest;
-          margin: 1rem;
+          margin: 1rem 0;
           // border-radius: @border-radius;
 
           @media (max-width: @max-mobile-width) {
