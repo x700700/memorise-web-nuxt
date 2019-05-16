@@ -2,12 +2,12 @@
   <div class="card-sucess-btns">
     <div class="btns-row">
       <div class="wrong-container">
-        <v-btn color="red lighten-3" class="btn-wrong" :style="styleBtn" @click="doneWrong()">
+        <v-btn dark color="red lighten-2" class="btn-wrong" :style="styleBtn" @click="doneWrong()">
           <font-awesome-icon icon="user-times" class="wrong-icon" />
         </v-btn>
       </div>
       <div class="right-container">
-        <v-btn color="green lighten-3" class="btn-right" :style="styleBtn" @click="doneRight()">
+        <v-btn dark color="green lighten-2" class="btn-right" :style="styleBtn" @click="doneRight()">
           <font-awesome-icon icon="user-check" class="right-icon" />
         </v-btn>
       </div>
