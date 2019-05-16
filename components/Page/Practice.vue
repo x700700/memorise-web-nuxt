@@ -127,7 +127,7 @@ export default {
         .practice-card {
           height: 326px;
           width: 326px;
-          border: 1px solid @grey-dark;
+          border: 1px solid @grey-light;
           margin: 1rem 0;
           transition: border 0.9s ease-in-out;
 

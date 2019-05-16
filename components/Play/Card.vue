@@ -1,8 +1,10 @@
 <template>
   <div class="card-container" @click="rotateCard()">
     <img src="/card-back.png" class="card-bg">
-    <div class="rotate-icon-container">
-      <font-awesome-icon icon="sync" class="rotate-icon" :style="styleRotateIcon"/>
+    <div class="rotate-icon-container" :style="styleRotateIcon">
+      <div class="rotate-icon-row">
+        <font-awesome-icon icon="sync" class="rotate-icon" />
+      </div>
     </div>
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
@@ -58,6 +60,11 @@ export default {
 
   }),
   computed: {
+    styleRotateIcon() {
+      return {
+        display: this.nextCardTransitionFull ? 'none' : 'initial',
+      };
+    },
     styleCardFront() {
       const fontAdjust = 32;
       return {
@@ -76,11 +83,6 @@ export default {
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
     },
-    styleRotateIcon() {
-      return {
-        display: this.nextCardTransitionFull ? 'none' : 'block',
-      };
-    }
   },
 }
 </script>
@@ -91,14 +93,14 @@ export default {
   .card-container {
     height: 100%;
     cursor: pointer;
-    // user-select: none;
+    box-shadow: @shadow3;
 
     &:focus, &:active {
       outline: none;
     }
 
     &:hover {
-      .rotate-icon-container {
+      .rotate-icon-row.rotate-icon-row {
         opacity: 0.3;
       }
     }
@@ -111,15 +113,22 @@ export default {
     }
     .rotate-icon-container {
       position: absolute;
-      z-index: 5;
       width: @card-size;
-      display: flex;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      z-index: 5;
 
-      .rotate-icon {
+      .rotate-icon-row {
         position: relative;
-        margin: @mid-space auto;
+        display: flex;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+
+        @media (max-width: @max-mobile-width) {
+          display: none;
+        }
+
+        .rotate-icon {
+          margin: @mid-space auto;
+        }
       }
     }
 

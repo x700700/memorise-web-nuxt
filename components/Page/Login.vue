@@ -38,9 +38,9 @@
           <v-btn
               :disabled="!form"
               :loading="isLoading"
-              @click="login"
               color="deep-purple lighten-4"
               class="btn-login"
+              @click="login"
           >Login
           </v-btn>
         </div>
