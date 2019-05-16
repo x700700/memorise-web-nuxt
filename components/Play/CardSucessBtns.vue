@@ -70,15 +70,11 @@ export default {
           }
 
           &:hover {
-            border: 1px solid @success-btn-border-color;
-
             .right-icon {
               color: @right-btn-light;
             }
           }
           @media (max-width: @max-mobile-width) {
-            border: 1px solid @success-btn-border-color;
-
             .right-icon {
               color: @right-btn-light;
             }
@@ -95,15 +91,11 @@ export default {
           }
 
           &:hover {
-            border: 1px solid @success-btn-border-color;
-
             .wrong-icon {
               color: @wrong-btn-light;
             }
           }
           @media (max-width: @max-mobile-width) {
-            border: 1px solid @success-btn-border-color;
-
             .wrong-icon {
               color: @wrong-btn-light;
             }
