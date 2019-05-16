@@ -127,11 +127,12 @@ export default {
         .practice-card {
           height: 326px;
           width: 326px;
-          border: 1px solid @grey-darkest;
+          border: 1px solid @grey-dark;
           margin: 1rem 0;
+          transition: border 0.9s ease-in-out;
 
           &:hover {
-            border: 2px solid @grey-dark;
+            border: 1px solid @grey-darkest;
           }
           @media (max-width: @max-mobile-width) {
             margin: 0;

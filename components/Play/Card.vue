@@ -1,6 +1,9 @@
 <template>
   <div class="card-container" @click="rotateCard()">
     <img src="/card-back.png" class="card-bg">
+    <div class="rotate-icon-container">
+      <font-awesome-icon icon="sync" class="rotate-icon" :style="styleRotateIcon"/>
+    </div>
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
         <div class="card-content">
@@ -73,6 +76,11 @@ export default {
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
     },
+    styleRotateIcon() {
+      return {
+        display: this.nextCardTransitionFull ? 'none' : 'block',
+      };
+    }
   },
 }
 </script>
@@ -89,11 +97,30 @@ export default {
       outline: none;
     }
 
+    &:hover {
+      .rotate-icon-container {
+        opacity: 0.3;
+      }
+    }
+
     .card-bg {
-      width: 324px;
-      height: 324px;
+      width: @card-size;
+      height: @card-size;
       position: absolute;
       opacity: 0.15;
+    }
+    .rotate-icon-container {
+      position: absolute;
+      z-index: 5;
+      width: @card-size;
+      display: flex;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+
+      .rotate-icon {
+        position: relative;
+        margin: @mid-space auto;
+      }
     }
 
     .front-back-container {
