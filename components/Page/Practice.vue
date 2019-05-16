@@ -113,9 +113,13 @@ export default {
           font-family: fantasy;
           font-size: 16px;
           font-weight: bold;
-          margin-bottom: @mid-space;
+          margin-top: @mid-space;
           padding: @mid-space 1rem;
           padding-left: 0;
+
+          @media (max-width: @max-mobile-width) {
+            margin-bottom: @mid-space;
+          }
         }
         .card-rotate {
           flex-grow: 1;

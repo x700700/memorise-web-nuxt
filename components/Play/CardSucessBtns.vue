@@ -2,14 +2,14 @@
   <div class="card-sucess-btns">
     <div class="btns-row">
       <div class="wrong-container">
-        <div class="btn-wrong" :style="styleBtn" @click="doneWrong()">
+        <v-btn color="red lighten-3" class="btn-wrong" :style="styleBtn" @click="doneWrong()">
           <font-awesome-icon icon="user-times" class="wrong-icon" />
-        </div>
+        </v-btn>
       </div>
       <div class="right-container">
-        <div class="btn-right" :style="styleBtn" @click="doneRight()">
+        <v-btn color="green lighten-3" class="btn-right" :style="styleBtn" @click="doneRight()">
           <font-awesome-icon icon="user-check" class="right-icon" />
-        </div>
+        </v-btn>
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@ export default {
     styleBtn() {
       return {
         pointerEvents: this.disable ? 'none' : 'auto',
-        // opacity: this.disable ? '0.4' : '1',
+        opacity: this.disable ? '0.7' : '1',
       };
     },
   },
@@ -58,12 +58,11 @@ export default {
       margin-bottom: 1rem;
 
       @media (max-width: @max-mobile-width) {
-        margin: 1rem 0;
+        margin: 2.5rem 0;
       }
 
       .right-container {
         .btn-right {
-          background-color: @right-btn-light;
           border: 1px solid @right-btn-dark;
 
           .right-icon {
@@ -71,18 +70,13 @@ export default {
           }
 
           &:hover {
-            background-color: @right-btn-dark;
             border: 1px solid @success-btn-border-color;
 
             .right-icon {
               color: @right-btn-light;
             }
           }
-          &:active {
-            background-color: white;
-          }
           @media (max-width: @max-mobile-width) {
-            background-color: @right-btn-dark;
             border: 1px solid @success-btn-border-color;
 
             .right-icon {
@@ -94,7 +88,6 @@ export default {
 
       .wrong-container {
         .btn-wrong {
-          background-color: @wrong-btn-light;
           border: 1px solid @wrong-btn-dark;
 
           .wrong-icon {
@@ -102,18 +95,13 @@ export default {
           }
 
           &:hover {
-            background-color: @wrong-btn-dark;
             border: 1px solid @success-btn-border-color;
 
             .wrong-icon {
               color: @wrong-btn-light;
             }
           }
-          &:active {
-            background-color: white;
-          }
           @media (max-width: @max-mobile-width) {
-            background-color: @wrong-btn-dark;
             border: 1px solid @success-btn-border-color;
 
             .wrong-icon {
@@ -126,8 +114,8 @@ export default {
       .btn-right, .btn-wrong {
         height: @success-btn-height;
         width: @success-btn-width;
+        margin: 0;
         cursor: pointer;
-        transition: background-color 0.3s ease-in-out;
 
         display: flex;
         justify-content: center;
@@ -136,7 +124,6 @@ export default {
 
       .right-icon, .wrong-icon {
         font-size: 38px;
-        transition: color 0.3s ease-in-out;
       }
     }
 
