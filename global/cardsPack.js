@@ -1,20 +1,10 @@
 import _ from 'lodash';
-
-const practice = [
-  { q: 'Cat', a: 'חתול' },
-  { q: 'Home', a: 'בית' },
-  { q: 'Smile', a: 'חיוך' },
-  /*
-  { q: 'Hirshfeld', a: 'שדה צבאים' },
-  { q: 'Guy Weiss', a: 'לך תדע' },
-   */
-];
-
+import { cardsPackStub } from '../stubs/cardsPack';
 
 export default class cardsPack {
 
   constructor() {
-    this.initialPack = _.cloneDeep(practice);
+    this.initialPack = _.cloneDeep(cardsPackStub);
     this.currentPack = _.cloneDeep(this.initialPack.filter(x => x.q && x.a));
     this.nextPack = [];
     this.validate();
