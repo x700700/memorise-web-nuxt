@@ -1,8 +1,8 @@
 <template>
-  <div class="card-container" @click="rotateCard()">
+  <div class="card-container" :style="styleCardContainer" @click="rotateCard()">
     <img src="/card-back.png" class="card-bg">
-    <div class="rotate-icon-container" :style="styleRotateIcon">
-      <div class="rotate-icon-row">
+    <div class="rotate-icon-container" :style="styleRotateContainer">
+      <div class="rotate-icon-row" :style="styleRotateRow">
         <font-awesome-icon icon="sync" class="rotate-icon" />
       </div>
     </div>
@@ -57,12 +57,30 @@ export default {
     }
   },
   data: () => ({
-
+    cardIsRotating: false,
   }),
+  watch: {
+    cardFront() {
+      this.cardIsRotating = true;
+      setTimeout(() => {
+        this.cardIsRotating = false;
+      }, 900);
+    },
+  },
   computed: {
-    styleRotateIcon() {
+    styleCardContainer() {
       return {
-        display: this.nextCardTransitionFull ? 'none' : 'initial',
+        boxShadow: this.nextCardTransitionWidth ? '0 0 8px 0 rgba(0, 0, 0, 0.6)' : undefined, //  '0 0 24px 0 rgba(0, 0, 0, .8)',
+      };
+    },
+    styleRotateContainer() {
+      return {
+        display: this.cardIsRotating ? 'none' : 'initial',
+      };
+    },
+    styleRotateRow() {
+      return {
+        opacity: this.cardIsRotating ? 0 : undefined,
       };
     },
     styleCardFront() {
@@ -93,13 +111,19 @@ export default {
   .card-container {
     height: 100%;
     cursor: pointer;
-    box-shadow: @shadow3;
+    box-shadow: @shadow2;
+    transition: box-shadow 0.3s ease-in-out;
 
     &:focus, &:active {
       outline: none;
     }
 
     &:hover {
+      box-shadow: @shadow3;
+
+      @media (max-width: @max-mobile-width) {
+        box-shadow: @shadow2;
+      }
       .rotate-icon-row.rotate-icon-row {
         opacity: 0.3;
       }
