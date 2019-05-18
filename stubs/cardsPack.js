@@ -1,8 +1,8 @@
 
 
 export const cardsPackStub = [
-  { q: 'Cat-long-word', a: 'חתול' },
-  { q: 'cat long word', a: 'בית' },
+  { q: 'Cat-long-word another line', a: 'חתול' },
+  { q: 'cat long word another line', a: 'בית' },
   // { q: 'Smile', a: 'חיוך' },
   /*
   { q: 'Hirshfeld', a: 'שדה צבאים' },

@@ -8,12 +8,12 @@
     </div>
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
-        <div class="card-content">
+        <div class="card-content" :style="styleCardContent">
           {{ q }}
         </div>
       </div>
       <div class="card-back-container" :style="styleCardBack">
-        <div class="card-content">
+        <div class="card-content" :style="styleCardContent">
           {{ a }}
         </div>
       </div>
@@ -101,6 +101,11 @@ export default {
         transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
       };
     },
+    styleCardContent() {
+      return {
+        // whiteSpace: this.nextCardTransitionFull ? 'nowrap' : 'wrap',
+      }
+    },
   },
 }
 </script>
@@ -167,11 +172,13 @@ export default {
         overflow: hidden;
         font-size: 32px;
         display: flex;
+        justify-content: center;
 
         .card-content {
-          width: 100%;
+          // min-width: @card-size;
           text-align: center;
           align-self: center;
+          padding: @mid-space @mid-space;
 
           &:focus, &:active {
             outline: 0;
