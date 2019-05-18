@@ -9,12 +9,12 @@
     <div class="front-back-container">
       <div class="card-front-container" :style="styleCardFront">
         <div class="card-content" :style="styleCardContent">
-          {{ q }}
+          <p>{{ q }}</p>
         </div>
       </div>
       <div class="card-back-container" :style="styleCardBack">
         <div class="card-content" :style="styleCardContent">
-          {{ a }}
+          <p>{{ a }}</p>
         </div>
       </div>
     </div>
@@ -25,7 +25,10 @@
 
 const transitionWidth = 'max-width 0.2s ease-in-out';
 const transitionFontSize = 'font-size 0.3s linear';
-const transitionFontSizeSlower = 'font-size 0.5s linear';
+const transitionFontSizeBack = 'font-size 0.5s linear';
+
+const transitionTranform = 'transform 0.2s linear 0.2s';
+const transitionTranformBack = 'transform 0.3s ease-in';
 
 export default {
   components: {
@@ -89,7 +92,7 @@ export default {
         maxWidth: this.cardFront && !this.nextCardTransitionWidth ? '100%' : '0%',
         marginLeft: this.nextCardTransitionFull ? '0px' : 'auto',
         fontSize: this.cardFront ? `${fontAdjust}px` : '1px',
-        transition: !this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
+        transition: !this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeBack}`,
       };
     },
     styleCardBack() {
@@ -98,12 +101,13 @@ export default {
         maxWidth: !this.cardFront ? '100%' : '0%',
         marginLeft: this.nextCardTransitionFull ? '0px' : 'auto',
         fontSize: !this.cardFront || this.nextCardTransitionFull ? `${fontAdjust}px` : '1px',
-        transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeSlower}`,
+        transition: this.cardFront ? `${transitionWidth}, ${transitionFontSize}` : `${transitionWidth} 0.25s, ${transitionFontSizeBack}`,
       };
     },
     styleCardContent() {
       return {
-        // whiteSpace: this.nextCardTransitionFull ? 'nowrap' : 'wrap',
+        transform: this.nextCardTransitionWidth ? 'translateX(-324px)' : 'none',
+        transition: this.nextCardTransitionWidth ? transitionTranform : transitionTranformBack,
       }
     },
   },
@@ -175,10 +179,12 @@ export default {
         justify-content: center;
 
         .card-content {
-          // min-width: @card-size;
+          min-width: @card-size;
           text-align: center;
           align-self: center;
           padding: @mid-space @mid-space;
+          transition: transform 0.3s linear;
+
 
           &:focus, &:active {
             outline: 0;
