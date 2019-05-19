@@ -1,4 +1,4 @@
-import { Axios, post } from '../global/myAxios';
+import { Axios, get, post } from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
@@ -26,6 +26,15 @@ export const mutations = {
   loginError(state, err) {
     setProps(state, err, false);
   },
+  requestAuth(state) {
+    setProps(state, null, true);
+  },
+  authSucceed(state, res) {
+    setProps(state, res, false);
+  },
+  authError(state, err) {
+    setProps(state, err, false);
+  },
 };
 
 export const actions = {
@@ -46,6 +55,25 @@ export const actions = {
           console.warn('NOT Authorized');
         }
         commit('loginError', { errorMessage: err.response.data.message || err.response.data });
+      });
+  },
+  auth({ commit }) {
+    console.warn('auth check...');
+    commit('requestAuth');
+    Axios(get, 'http://memorise.com:4044/auth/check', null,
+      (resp) => {
+        if (resp.status === 200) {
+          commit('authSucceed', resp.data);
+        } else {
+          commit('authError', { errorMessage: resp.statusText });
+        }
+      },
+      (err) => {
+        const authCodes = [400, 401];
+        if (authCodes.includes(err.response.status)) {
+          console.warn('NOT Authorized');
+        }
+        commit('authError', { errorMessage: err.response.data.message || err.response.data });
       });
   }
 };

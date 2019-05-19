@@ -15,13 +15,15 @@ export default {
   props: {
   },
   data: () => ({
+    isLoggedIn: false,
   }),
   computed: {
     nickName() {
       return this.$store.state.user.nickName;
     },
   },
-  beforeUpdate() {
+  beforeMount() {
+    this.$store.dispatch('user/auth');
   },
   mounted() {
   },
