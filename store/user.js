@@ -1,20 +1,28 @@
-
-/*
-const myPlugin = (store) => {
-  store.subscribe((mutation, state) => {
-    console.warn('-->')
-  })
-};
-export const plugins = [myPlugin];
-*/
+// import axios from '@nuxtjs/axios';
 
 export const state = () => ({
   isLoggedIn: false,
 });
 
 export const mutations = {
-  login(state, loginBody) {
-    state.isLoggedIn = true;
-    // console.warn('mutation: ', loginBody);
+  setIsLoggedIn(state, is) {
+    state.isLoggedIn = is;
   }
+};
+
+export const actions = {
+  login({ commit }, loginBody) {
+    console.warn(loginBody);
+    commit('setIsLoggedIn', true);
+  }
+  /*
+  loadCoins() {
+    axios
+      .get('localhost:4044/auth/check')
+      .then(r => r.data)
+      .then((res) => {
+        console.log(res)
+      })
+  },
+  */
 };

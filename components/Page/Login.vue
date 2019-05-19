@@ -15,7 +15,6 @@
           >
             <v-text-field
                 v-model="username"
-                :rules="[rules.required]"
                 class="input-field"
                 box
                 clearable
@@ -25,7 +24,6 @@
             ></v-text-field>
             <v-text-field
                 v-model="password"
-                :rules="[rules.required, rules.length(1)]"
                 class="input-field"
                 box
                 clearable
@@ -56,6 +54,9 @@
 <script>
 import { mapMutations } from 'vuex'
 import $ from 'jquery';
+
+// :rules="[rules.required, rules.length(1)]"
+//
 
 export default {
   components: {
@@ -91,7 +92,7 @@ export default {
         password: this.password
       };
       // console.warn('login', loginBody);
-      this.$store.commit('user/login', loginBody);
+      this.$store.dispatch('user/login', loginBody);
     },
     ...mapMutations({
       // doLogin: 'user/login', // map `this.doLogin()` to `this.$store.commit('login', loginBody)`
