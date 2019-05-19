@@ -1,4 +1,13 @@
 
+/*
+const myPlugin = (store) => {
+  store.subscribe((mutation, state) => {
+    console.warn('-->')
+  })
+};
+export const plugins = [myPlugin];
+*/
+
 export const state = () => ({
   isLoggedIn: false,
 });
