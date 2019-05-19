@@ -1,3 +1,4 @@
+
 export const state = () => ({
   list: ['a', 'b'],
 });

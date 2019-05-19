@@ -1,7 +1,6 @@
 <template>
   <div class="trainings-list-container">
     <p>Trainings List {{ list }}</p>
-    <p>Trainings Count: {{ count }}</p>
     <br />
     <br />
     <div @click="btnClicked">
@@ -53,7 +52,7 @@ export default {
     MyModal,
   },
   computed: mapState({
-    count: state => state.trainings.list,
+    list: state => state.trainings.list,
   }),
   methods: {
     btnClicked() {
