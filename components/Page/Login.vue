@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <p>Logged in with: {{ nickName }}</p>
-    <LoginForm />
+    <LoginForm v-if="authChecked && !isLoggedIn"/>
   </div>
 </template>
 
@@ -15,11 +15,16 @@ export default {
   props: {
   },
   data: () => ({
-    isLoggedIn: false,
   }),
   computed: {
     nickName() {
       return this.$store.state.user.nickName;
+    },
+    isLoggedIn() {
+      return this.$store.state.user.isLoggedIn;
+    },
+    authChecked() {
+      return this.$store.state.user.authChecked;
     },
   },
   beforeMount() {

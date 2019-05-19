@@ -6,6 +6,7 @@ export const state = () => ({
   nickName: null,
   info: null,
   error: null,
+  authChecked: false,
 });
 
 const setProps = (state, res, fetch) => {
@@ -31,6 +32,7 @@ export const mutations = {
   },
   authSucceed(state, res) {
     setProps(state, res, false);
+    state.authChecked = true;
   },
   authError(state, err) {
     setProps(state, err, false);
