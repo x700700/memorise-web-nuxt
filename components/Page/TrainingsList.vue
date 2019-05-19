@@ -1,6 +1,7 @@
 <template>
   <div class="trainings-list-container">
-    Trainings List
+    <p>Trainings List</p>
+    <p>Trainings Count: </p>
     <br />
     <br />
     <div @click="btnClicked">

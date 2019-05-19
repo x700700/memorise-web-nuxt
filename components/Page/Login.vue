@@ -5,6 +5,7 @@
       <div class="login-cloumn">
         <div class="title">
           <p>Sign-In memoRise</p>
+          <p>Is Logged-In: {{ isLoggedIn }}</p>
         </div>
         <div class="inputs-container">
           <v-form
@@ -53,6 +54,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import $ from 'jquery';
 
 export default {
@@ -74,14 +76,26 @@ export default {
     }
   }),
   computed: {
+    isLoggedIn() {
+      return this.$store.state.user.isLoggedIn;
+    }
   },
   mounted() {
+    // Supresss Material v-app min-height:
     $('.login-container .application--wrap').css('min-height', '0');
   },
   methods: {
     login() {
-      console.warn('login', this.username, this.password);
+      const loginBody = {
+        nickName: this.username,
+        password: this.password
+      };
+      console.warn('login', loginBody);
+      this.$store.commit('user/login');
     },
+    ...mapMutations({
+      // login: 'todos/toggle'
+    }),
   },
 }
 </script>
