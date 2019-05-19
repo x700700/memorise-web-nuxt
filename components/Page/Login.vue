@@ -5,7 +5,7 @@
       <div class="login-cloumn">
         <div class="title">
           <p>Sign-In memoRise</p>
-          <p>Is Logged-In: {{ nickName || loginError }}</p>
+          <p>Is Logged-In: {{ nickName }}</p>
         </div>
         <div class="inputs-container">
           <v-form
@@ -14,8 +14,10 @@
               height="500px"
           >
             <v-text-field
+                ref="username"
                 v-model="username"
                 :rules="[rules.required]"
+                :error-messages="loginError"
                 class="input-field"
                 box
                 clearable
@@ -54,7 +56,6 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
 import $ from 'jquery';
 
 export default {
@@ -66,6 +67,7 @@ export default {
     form: false,
     username: undefined,
     password: undefined,
+    loginError: null,
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
       length: len => v => (v || '').length >= len || `Minimum ${len} characters required`,
@@ -78,16 +80,25 @@ export default {
     nickName() {
       return this.$store.state.user.nickName;
     },
-    loginError() {
-      return this.$store.state.user.error;
-    },
     isLogin() {
       return this.$store.state.user.duringFetch;
     },
   },
+  beforeUpdate() {
+    this.loginError = this.$store.state.user.error;
+    if (this.loginError && this.username) {
+      this.loginError = null;
+    }
+    if (this.loginError) {
+      this.$refs.username.focus();
+    }
+  },
   mounted() {
     // Supresss Material v-app min-height:
     $('.login-container .application--wrap').css('min-height', '0');
+
+    // Start focus - Username field
+    this.$refs.username.focus();
   },
   methods: {
     login() {
@@ -95,12 +106,9 @@ export default {
         nickName: this.username,
         password: this.password
       };
-      // console.warn('login', loginBody);
+      this.$refs.form.reset();
       this.$store.dispatch('user/login', loginBody);
     },
-    ...mapMutations({
-      // doLogin: 'user/login', // map `this.doLogin()` to `this.$store.commit('login', loginBody)`
-    }),
   },
 }
 </script>
