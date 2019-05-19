@@ -15,6 +15,7 @@
           >
             <v-text-field
                 v-model="username"
+                :rules="[rules.required]"
                 class="input-field"
                 box
                 clearable
@@ -24,6 +25,7 @@
             ></v-text-field>
             <v-text-field
                 v-model="password"
+                :rules="[rules.required, rules.length(1)]"
                 class="input-field"
                 box
                 clearable
@@ -54,9 +56,6 @@
 <script>
 import { mapMutations } from 'vuex'
 import $ from 'jquery';
-
-// :rules="[rules.required, rules.length(1)]"
-//
 
 export default {
   components: {

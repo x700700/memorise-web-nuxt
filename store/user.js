@@ -1,4 +1,4 @@
-import { Axios } from '../global/myAxios';
+import { Axios, post } from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
@@ -32,7 +32,7 @@ export const actions = {
   login({ commit }, loginBody) {
     console.warn('login action:', loginBody);
     commit('requestLogoin');
-    Axios('http://memorise.com:4044/auth/login', loginBody,
+    Axios(post, 'http://memorise.com:4044/auth/login', loginBody,
       (resp) => {
         if (resp.status === 200) {
           commit('loginSucceed', resp.data);
@@ -41,7 +41,6 @@ export const actions = {
         }
       },
       (err) => {
-        console.warn('error ====>', err.response);
         const authCodes = [400, 401];
         if (authCodes.includes(err.response.status)) {
           console.warn('NOT Authorized');

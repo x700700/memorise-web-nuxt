@@ -1,8 +1,15 @@
 import axios from 'axios';
 
-export const Axios = (address, body, onSuccess, onError) => {
-  return axios
-    .post(address, body, {
+
+export const get = axios.get;
+export const post = axios.post;
+export const put = axios.put;
+export const del = axios.delete;
+
+
+export const Axios = (axiosFn, address, body, onSuccess, onError) => {
+  return axiosFn(address, body,
+    {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
