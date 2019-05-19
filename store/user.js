@@ -1,4 +1,4 @@
-// import axios from '@nuxtjs/axios';
+import axios from 'axios';
 
 export const state = () => ({
   isLoggedIn: false,
@@ -12,17 +12,29 @@ export const mutations = {
 
 export const actions = {
   login({ commit }, loginBody) {
-    console.warn(loginBody);
-    commit('setIsLoggedIn', true);
-  }
-  /*
-  loadCoins() {
+    commit('setIsLoggedIn', false);
     axios
-      .get('localhost:4044/auth/check')
-      .then(r => r.data)
-      .then((res) => {
-        console.log(res)
+      .get('http://memorise.com:4044/auth/check', {
+        headers: {
+          'Accept': 'application/json',
+        },
       })
-  },
-  */
+      .then((r) => {
+        console.warn('->', r);
+        return r.data;
+      })
+      .then((res) => {
+        console.warn('--->', res);
+      })
+      .catch((err) => {
+        console.warn('===>', err);
+      })
+  }
 };
+
+
+/*
+'Access-Control-Allow-Origin': '*',
+'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE',
+'Access-Control-Allow-Headers': 'Content-Type, Authorisation',
+*/
