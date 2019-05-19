@@ -1,4 +1,4 @@
-import { Axios, get, post } from '../global/myAxios';
+import { Axios } from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
@@ -41,7 +41,7 @@ export const actions = {
   login({ commit }, loginBody) {
     console.warn('login action:', loginBody);
     commit('requestLogoin');
-    Axios(post, 'http://dev.memorise.com:4044/auth/login', loginBody,
+    Axios(this.$axios.post, '/api/auth/login', loginBody,
       (resp) => {
         commit('loginSucceed', resp);
       },
@@ -56,7 +56,7 @@ export const actions = {
   auth({ commit }) {
     console.warn('auth check...');
     commit('requestAuth');
-    Axios(get, 'http://dev.memorise.com:4044/auth/check', null,
+    Axios(this.$axios.get, '/api/auth/check', null,
       (resp) => {
         commit('authSucceed', resp);
       },

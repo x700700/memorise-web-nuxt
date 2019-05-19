@@ -59,10 +59,13 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // proxy: true,
+    // browserBaseURL: 'http://dev.memorise.com:3038',
+    // baseURL: 'http://dev.memorise.com:4044',
+    credentials: true,
+    proxy: true,
   },
   proxy: {
-    // '/api': 'http://dev.memorise.com:4044/',
+    '/api': 'http://dev.memorise.com:4044/',
   },
 
   /*

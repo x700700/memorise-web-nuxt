@@ -1,21 +1,6 @@
-import axios from 'axios';
-
-
-export const get = axios.get;
-export const post = axios.post;
-export const put = axios.put;
-export const del = axios.delete;
-
 
 export const Axios = (axiosFn, address, body, onSuccess, onError) => {
-  return axiosFn(address, body,
-    {
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-    })
+  return axiosFn(address, body)
     .then(function (response) {
       console.warn('axios response --->', response);
       if (response.status === 200) {
