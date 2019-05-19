@@ -51,10 +51,10 @@ export const actions = {
       },
       (err) => {
         const authCodes = [400, 401];
-        if (authCodes.includes(err.response.status)) {
+        if (authCodes.includes(err.status)) {
           console.warn('NOT Authorized');
         }
-        commit('loginError', { errorMessage: err.response.data.message || err.response.data });
+        commit('loginError', { errorMessage: err.data.message || err.data });
       });
   },
   auth({ commit }) {
@@ -70,10 +70,10 @@ export const actions = {
       },
       (err) => {
         const authCodes = [400, 401];
-        if (authCodes.includes(err.response.status)) {
+        if (authCodes.includes(err.status)) {
           console.warn('NOT Authorized');
         }
-        commit('authError', { errorMessage: err.response.data.message || err.response.data });
+        commit('authError', { errorMessage: err.data.message || err.data });
       });
   }
 };
