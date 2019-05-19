@@ -10,6 +10,7 @@ export const del = axios.delete;
 export const Axios = (axiosFn, address, body, onSuccess, onError) => {
   return axiosFn(address, body,
     {
+      withCredentials: true,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
@@ -17,7 +18,11 @@ export const Axios = (axiosFn, address, body, onSuccess, onError) => {
     })
     .then(function (response) {
       console.warn('axios response --->', response);
-      onSuccess && onSuccess(response);
+      if (response.status === 200) {
+        onSuccess && onSuccess(response);
+      } else {
+        onError && onError(response.statusText);
+      }
     })
     .catch(function (err) {
       console.warn('axios error ===>', err.response);
