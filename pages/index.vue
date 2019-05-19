@@ -20,6 +20,9 @@ export default {
       ]
     }
   },
+  beforeMount() {
+    this.$store.dispatch('user/auth');
+  },
   mounted() {
     /*
     if (this.$route.fullPath === '/') {

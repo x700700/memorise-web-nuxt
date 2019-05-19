@@ -40,11 +40,6 @@ export default {
       return this.$store.state.user.duringFetch;
     },
   },
-  beforeMount() {
-    this.$store.dispatch('user/auth');
-  },
-  mounted() {
-  },
   methods: {
     logout() {
       this.$store.dispatch('user/logout');
