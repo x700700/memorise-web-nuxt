@@ -43,7 +43,7 @@ export const actions = {
     commit('requestLogoin');
     Axios(post, 'http://memorise.com:4044/auth/login', loginBody,
       (resp) => {
-        commit('loginSucceed', resp.data);
+        commit('loginSucceed', resp);
       },
       (err) => {
         const authCodes = [400, 401];
@@ -58,7 +58,7 @@ export const actions = {
     commit('requestAuth');
     Axios(get, 'http://memorise.com:4044/auth/check', null,
       (resp) => {
-        commit('authSucceed', resp.data);
+        commit('authSucceed', resp);
       },
       (err) => {
         const authCodes = [400, 401];

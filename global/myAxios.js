@@ -19,7 +19,7 @@ export const Axios = (axiosFn, address, body, onSuccess, onError) => {
     .then(function (response) {
       console.warn('axios response --->', response);
       if (response.status === 200) {
-        onSuccess && onSuccess(response);
+        onSuccess && onSuccess(response.data);
       } else {
         onError && onError(response.statusText);
       }
