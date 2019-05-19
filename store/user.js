@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { Axios } from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
@@ -32,23 +32,15 @@ export const actions = {
   login({ commit }, loginBody) {
     console.warn('login action:', loginBody);
     commit('requestLogoin');
-    axios
-      .post('http://memorise.com:4044/auth/login', loginBody, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-      })
-      .then(function (response) {
-        if (response.status === 200) {
-          console.warn('axios response:', response.data);
-          commit('loginSucceed', response.data);
+    Axios('http://memorise.com:4044/auth/login', loginBody,
+      (resp) => {
+        if (resp.status === 200) {
+          commit('loginSucceed', resp.data);
         } else {
-          console.warn('Something went wrong:', response);
-          commit('loginError', { errorMessage: response.statusText });
+          commit('loginError', { errorMessage: resp.statusText });
         }
-      })
-      .catch(function (err) {
+      },
+      (err) => {
         console.warn('error ====>', err.response);
         const authCodes = [400, 401];
         if (authCodes.includes(err.response.status)) {
