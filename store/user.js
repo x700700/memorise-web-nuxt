@@ -18,7 +18,7 @@ const setProps = (state, res, fetch) => {
 };
 
 export const mutations = {
-  requestLogoin(state) {
+  requestTrans(state) {
     setProps(state, null, true);
   },
   loginSucceed(state, res) {
@@ -27,22 +27,23 @@ export const mutations = {
   loginError(state, err) {
     setProps(state, err, false);
   },
-  requestAuth(state) {
-    setProps(state, null, true);
-  },
   authSucceed(state, res) {
     setProps(state, res, false);
     state.authChecked = true;
   },
   authError(state, err) {
     setProps(state, err, false);
+    state.authChecked = true;
+  },
+  logoutSucceed(state, res) {
+    setProps(state, null, false);
   },
 };
 
 export const actions = {
   login({ commit }, loginBody) {
     console.warn('login action:', loginBody);
-    commit('requestLogoin');
+    commit('requestTrans');
     Axios(this.$axios.post, '/api/auth/login', loginBody,
       (resp) => {
         commit('loginSucceed', resp);
@@ -57,7 +58,7 @@ export const actions = {
   },
   auth({ commit }) {
     console.warn('auth check...');
-    commit('requestAuth');
+    commit('requestTrans');
     Axios(this.$axios.get, '/api/auth/check', null,
       (resp) => {
         commit('authSucceed', resp);
@@ -69,5 +70,16 @@ export const actions = {
         }
         commit('authError', { errorMessage: err.data.message || err.data });
       });
-  }
+  },
+  logout({ commit }) {
+    console.warn('logout action:');
+    commit('requestTrans');
+    Axios(this.$axios.get, '/api/auth/logout', null,
+      (resp) => {
+        commit('logoutSucceed', resp);
+      },
+      (err) => {
+        commit('loginError', { errorMessage: err.data.message || err.data });
+      });
+  },
 };

@@ -1,7 +1,17 @@
 <template>
   <div class="login-container">
-    <p>Logged in with: {{ nickName }}</p>
-    <LoginForm v-if="authChecked && !isLoggedIn"/>
+    <LoginForm v-if="authChecked && !isLoggedIn" />
+    <div v-if="authChecked && isLoggedIn" class="logout-button-contianer">
+      <p>Logged in with: {{ nickName }}</p>
+      <v-btn
+          :disabled="duringLogout"
+          :loading="duringLogout"
+          color="deep-purple darken-1"
+          class="btn-logout"
+          @click="logout"
+      >Logout
+      </v-btn>
+    </div>
   </div>
 </template>
 
@@ -26,6 +36,9 @@ export default {
     authChecked() {
       return this.$store.state.user.authChecked;
     },
+    duringLogout() {
+      return this.$store.state.user.duringFetch;
+    },
   },
   beforeMount() {
     this.$store.dispatch('user/auth');
@@ -33,6 +46,9 @@ export default {
   mounted() {
   },
   methods: {
+    logout() {
+      this.$store.dispatch('user/logout');
+    },
   },
 }
 </script>
@@ -45,5 +61,11 @@ export default {
     font-weight: bold;
     margin-top: 1rem;
     margin-bottom: -1rem;
+
+    .logout-button-contianer {
+      .btn-logout {
+        color: @white;
+      }
+    }
   }
 </style>
