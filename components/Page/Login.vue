@@ -5,7 +5,7 @@
       <div class="login-cloumn">
         <div class="title">
           <p>Sign-In memoRise</p>
-          <p>Is Logged-In: {{ isLoggedIn }}</p>
+          <p>Is Logged-In: {{ nickName }}</p>
         </div>
         <div class="inputs-container">
           <v-form
@@ -36,7 +36,7 @@
           </v-form>
           <v-btn
               :disabled="!form"
-              :loading="isLoading"
+              :loading="isLogin"
               color="deep-purple lighten-4"
               class="btn-login"
               @click="login"
@@ -64,7 +64,6 @@ export default {
   props: {
   },
   data: () => ({
-    isLoading: false,
     form: false,
     username: undefined,
     password: undefined,
@@ -77,9 +76,12 @@ export default {
     }
   }),
   computed: {
-    isLoggedIn() {
-      return this.$store.state.user.isLoggedIn;
-    }
+    nickName() {
+      return this.$store.state.user.nickName;
+    },
+    isLogin() {
+      return this.$store.state.user.duringFetch;
+    },
   },
   mounted() {
     // Supresss Material v-app min-height:
