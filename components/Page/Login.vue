@@ -1,5 +1,6 @@
 <template>
   <div class="login-container">
+    <p>Logged in with: {{ nickName }}</p>
     <LoginForm />
   </div>
 </template>
@@ -16,6 +17,9 @@ export default {
   data: () => ({
   }),
   computed: {
+    nickName() {
+      return this.$store.state.user.nickName;
+    },
   },
   beforeUpdate() {
   },
@@ -30,6 +34,9 @@ export default {
   @import '../../global/vars';
 
   .login-container {
-
+    text-align: center;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
   }
 </style>

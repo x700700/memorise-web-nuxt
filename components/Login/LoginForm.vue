@@ -5,7 +5,6 @@
       <div class="login-cloumn">
         <div class="title">
           <p>Sign-In memoRise</p>
-          <p>Is Logged-In: {{ nickName }}</p>
         </div>
         <div class="inputs-container">
           <v-form
@@ -40,7 +39,7 @@
           </v-form>
           <v-btn
               :disabled="!form"
-              :loading="isLogin"
+              :loading="duringLogin"
               color="deep-purple lighten-4"
               class="btn-login"
               @click="login"
@@ -77,10 +76,7 @@ export default {
     }
   }),
   computed: {
-    nickName() {
-      return this.$store.state.user.nickName;
-    },
-    isLogin() {
+    duringLogin() {
       return this.$store.state.user.duringFetch;
     },
   },
@@ -131,6 +127,7 @@ export default {
       margin-top: 2rem;
       border: 1px solid @grey-darkest;
       border-radius: @border-radius;
+      font-weight: normal;
 
       @media (max-width: @max-mobile-width) {
         margin-top: 1rem;
