@@ -5,7 +5,7 @@
       <div class="login-cloumn">
         <div class="title">
           <p>Sign-In memoRise</p>
-          <p>Is Logged-In: {{ nickName }}</p>
+          <p>Is Logged-In: {{ nickName || loginError }}</p>
         </div>
         <div class="inputs-container">
           <v-form
@@ -78,6 +78,9 @@ export default {
   computed: {
     nickName() {
       return this.$store.state.user.nickName;
+    },
+    loginError() {
+      return this.$store.state.user.error;
     },
     isLogin() {
       return this.$store.state.user.duringFetch;

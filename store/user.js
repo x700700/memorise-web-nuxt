@@ -5,27 +5,26 @@ export const state = () => ({
   isLoggedIn: false,
   nickName: null,
   info: null,
+  error: null,
 });
+
+const setProps = (state, res, fetch) => {
+  state.isLoggedIn = (res && res.nickName) || false;
+  state.nickName = (res && res.nickName) || null;
+  state.info = (res && res.info) || null;
+  state.duringFetch = fetch;
+  state.error = (res && res.errorMessage) || null;
+};
 
 export const mutations = {
   requestLogoin(state) {
-    state.isLoggedIn = false;
-    state.nickName = null;
-    state.info = null;
-    state.duringFetch = true;
+    setProps(state, null, true);
   },
   loginSucceed(state, res) {
-    state.isLoggedIn = true;
-    state.nickName = res.nickName;
-    state.info = res.info;
-    state.duringFetch = false;
+    setProps(state, res, false);
   },
   loginError(state, err) {
-    console.warn('blas');
-    state.isLoggedIn = false;
-    state.nickName = null;
-    state.info = null;
-    state.duringFetch = false;
+    setProps(state, err, false);
   },
 };
 
@@ -44,6 +43,9 @@ export const actions = {
         if (response.status === 200) {
           console.warn('axios response:', response.data);
           commit('loginSucceed', response.data);
+        } else {
+          console.warn('Something went wrong:', response);
+          commit('loginError', { errorMessage: response.statusText });
         }
       })
       .catch(function (err) {
@@ -52,7 +54,7 @@ export const actions = {
         if (authCodes.includes(err.response.status)) {
           console.warn('NOT Authorized');
         }
-        commit('loginSucceed', err.response);
+        commit('loginError', { errorMessage: err.response.data.message || err.response.data });
       });
   }
 };
