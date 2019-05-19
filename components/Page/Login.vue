@@ -41,6 +41,8 @@ export default {
     },
   },
   methods: {
+    // Google login client id: 370816663715-4oamd63c4m1ujas48cj09cgvv62hbe7d.apps.googleusercontent.com
+
     logout() {
       this.$store.dispatch('user/logout');
     },
