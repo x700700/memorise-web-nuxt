@@ -62,14 +62,6 @@ export default {
   data: () => ({
     cardIsRotating: false,
   }),
-  watch: {
-    cardFront() {
-      this.cardIsRotating = true;
-      setTimeout(() => {
-        this.cardIsRotating = false;
-      }, 900);
-    },
-  },
   computed: {
     styleCardContainer() {
       return {
@@ -109,6 +101,14 @@ export default {
         transform: this.nextCardTransitionWidth ? 'translateX(-324px)' : 'none',
         transition: this.nextCardTransitionWidth ? transitionTranform : transitionTranformBack,
       }
+    },
+  },
+  watch: {
+    cardFront() {
+      this.cardIsRotating = true;
+      setTimeout(() => {
+        this.cardIsRotating = false;
+      }, 900);
     },
   },
 }
