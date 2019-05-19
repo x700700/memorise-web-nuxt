@@ -90,11 +90,11 @@ export default {
         nickName: this.username,
         password: this.password
       };
-      console.warn('login', loginBody);
-      this.$store.commit('user/login');
+      // console.warn('login', loginBody);
+      this.$store.commit('user/login', loginBody);
     },
     ...mapMutations({
-      // login: 'todos/toggle'
+      // doLogin: 'user/login', // map `this.doLogin()` to `this.$store.commit('login', loginBody)`
     }),
   },
 }

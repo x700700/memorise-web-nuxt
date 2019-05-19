@@ -3,7 +3,8 @@ export const state = () => ({
 });
 
 export const mutations = {
-  login(state) {
+  login(state, loginBody) {
     state.isLoggedIn = true;
+    console.warn('mutation: ', loginBody);
   }
 };

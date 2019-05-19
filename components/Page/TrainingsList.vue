@@ -1,7 +1,7 @@
 <template>
   <div class="trainings-list-container">
-    <p>Trainings List</p>
-    <p>Trainings Count: </p>
+    <p>Trainings List {{ list }}</p>
+    <p>Trainings Count: {{ count }}</p>
     <br />
     <br />
     <div @click="btnClicked">
@@ -45,12 +45,16 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import MyModal from '../tools/MyModal';
 
 export default {
   components: {
     MyModal,
   },
+  computed: mapState({
+    count: state => state.trainings.list,
+  }),
   methods: {
     btnClicked() {
       // eslint-disable-next-line no-console
