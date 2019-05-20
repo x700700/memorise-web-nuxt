@@ -12,6 +12,5 @@ export const Axios = (axiosFn, address, body, onSuccess, onError) => {
     .catch(function (err) {
       console.warn('axios error ===>', err.response);
       onError && onError(err.response);
-
     });
 };

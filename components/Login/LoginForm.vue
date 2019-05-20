@@ -6,6 +6,11 @@
         <div class="title">
           <p>Sign-In memoRise</p>
         </div>
+        <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">
+          <p>Login via Google</p>
+        </GoogleLogin>
+        <p>Or:</p>
+        <br />
         <div class="inputs-container">
           <v-form
               ref="form"
@@ -56,9 +61,11 @@
 
 <script>
 import $ from 'jquery';
+import GoogleLogin from 'vue-google-login';
 
 export default {
   components: {
+    GoogleLogin,
   },
   props: {
   },
@@ -67,6 +74,10 @@ export default {
     username: undefined,
     password: undefined,
     loginError: null,
+    gloginParms: {
+      client_id: '370816663715-toqg1i2f2kfif0jckraja1hrfka8plmb.apps.googleusercontent.com',
+      // client secret: sSHa5DYYx31gFowoGZf37yFl
+    },
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
       length: len => v => (v || '').length >= len || `Minimum ${len} characters required`,
@@ -104,6 +115,14 @@ export default {
       };
       this.$refs.form.reset();
       this.$store.dispatch('user/login', loginBody);
+    },
+    onGloginSuccess() {
+      console.warn('hey');
+      return true;
+    },
+    onGloginFailure() {
+      console.warn('bas');
+      return true;
     },
   },
 }

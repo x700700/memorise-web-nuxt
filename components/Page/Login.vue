@@ -1,6 +1,5 @@
 <template>
   <div class="login-container">
-    <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">Google Login</GoogleLogin>
     <LoginForm v-if="authChecked && !isLoggedIn" />
     <div v-if="authChecked && isLoggedIn" class="logout-button-contianer">
       <p>Logged in with: {{ nickName }}</p>
@@ -17,20 +16,15 @@
 </template>
 
 <script>
-import GoogleLogin from 'vue-google-login';
 import LoginForm from '../Login/LoginForm';
 
 export default {
   components: {
     LoginForm,
-    GoogleLogin,
   },
   props: {
   },
   data: () => ({
-    gloginParms: {
-      client_id: '370816663715-toqg1i2f2kfif0jckraja1hrfka8plmb.apps.googleusercontent.com',
-    }
   }),
   computed: {
     nickName() {
@@ -47,15 +41,9 @@ export default {
     },
   },
   methods: {
-    // Google login:
-    // client id: 370816663715-toqg1i2f2kfif0jckraja1hrfka8plmb.apps.googleusercontent.com
-    // client secret: sSHa5DYYx31gFowoGZf37yFl
-
     logout() {
       this.$store.dispatch('user/logout');
     },
-    onGloginFailure() {},
-    onGloginSuccess() {},
   },
 }
 </script>

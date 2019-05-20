@@ -68,7 +68,7 @@ export const actions = {
         if (authCodes.includes(err.status)) {
           console.warn('NOT Authorized');
         }
-        commit('authError', { errorMessage: err.data.message || err.data });
+        commit('authError'); // , { errorMessage: err.data.message || err.data });
       });
   },
   logout({ commit }) {
