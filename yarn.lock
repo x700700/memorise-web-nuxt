@@ -6370,6 +6370,10 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
+nuxt-storage@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/nuxt-storage/-/nuxt-storage-1.2.1.tgz#a7d1360679d3e4d4cba05daa317c8019ccb7a9fb"
+
 nuxt@^2.4.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-2.6.2.tgz#1b40766e1a1d63b8e6fdaa3d87db4184acb2f5fd"

@@ -5,12 +5,12 @@ class axios {
     this.getFn = getFn;
   }
 
-  setToken(token) {
-    this.token = token;
+  setToken(jwtToken) {
+    this.jwtToken = jwtToken;
   }
 
   call(axiosFn, address, body, onSuccess, onError) {
-    const headers = this.token ? { headers: { Authorization: 'Bearer ' + this.token } } : undefined;
+    const headers = this.jwtToken ? { headers: { Authorization: 'Bearer ' + this.jwtToken } } : undefined;
     // console.warn('headers ---> ', headers);
 
     let isGet = false;

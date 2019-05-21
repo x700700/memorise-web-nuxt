@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { getData } from 'nuxt-storage/local-storage';
 import Axios from '../../global/myAxios';
 import MemoHeader from './MemoHeader';
 
@@ -39,9 +40,13 @@ export default {
       ]
     }
   },
-  mounted() {
+  beforeMount() {
     Axios.init(this.$axios, this.$axios.get);
-
+    const jwtToken = getData('jwtToken');
+    Axios.setToken(jwtToken);
+    this.$store.dispatch('user/auth');
+  },
+  mounted() {
     /*
     if (this.$route.fullPath === '/') {
       this.$router.push('/login');

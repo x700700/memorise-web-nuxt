@@ -1,3 +1,4 @@
+import { setData } from 'nuxt-storage/local-storage';
 import Axios from '../global/myAxios';
 
 export const state = () => ({
@@ -18,6 +19,12 @@ const setProps = (state, res, fetch) => {
   state.error = (res && res.errorMessage) || null;
 };
 
+const resetJwtToken = (store) => {
+  store.jwtToken = null;
+  setData('jwtToken', null);
+  Axios.setToken(null);
+};
+
 export const mutations = {
   requestTrans(state) {
     setProps(state, null, true);
@@ -25,15 +32,15 @@ export const mutations = {
   loginSucceed(state, res) {
     setProps(state, res.user, false);
     this.jwtToken = res.token;
-    // Todo - set jwt into local storage
     Axios.setToken(this.jwtToken);
+    setData('jwtToken', this.jwtToken, 24 * 60 * 60);
   },
   loginError(state, err) {
     setProps(state, err, false);
-    // Todo - clear
+    resetJwtToken(this);
   },
   authSucceed(state, res) {
-    setProps(state, res.user, false);
+    setProps(state, res, false);
     state.authChecked = true;
   },
   authError(state, err) {
@@ -42,8 +49,7 @@ export const mutations = {
   },
   logoutSucceed(state) {
     setProps(state, null, false);
-    this.jwtToken = null;
-    // Todo - clear
+    resetJwtToken(this);
   },
 };
 
