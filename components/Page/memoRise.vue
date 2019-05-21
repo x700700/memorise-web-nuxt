@@ -23,7 +23,9 @@
 </template>
 
 <script>
+import Axios from '../../global/myAxios';
 import MemoHeader from './MemoHeader';
+
 export default {
   components: {
     MemoHeader
@@ -38,6 +40,8 @@ export default {
     }
   },
   mounted() {
+    Axios.init(this.$axios, this.$axios.get);
+
     /*
     if (this.$route.fullPath === '/') {
       this.$router.push('/login');

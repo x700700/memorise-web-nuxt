@@ -12,6 +12,11 @@
       >Logout
       </v-btn>
     </div>
+    <v-btn
+        @click="execAuth"
+    >Auth
+    </v-btn>
+
   </div>
 </template>
 
@@ -43,6 +48,9 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch('user/logout');
+    },
+    execAuth() {
+      this.$store.dispatch('user/auth');
     },
   },
 }

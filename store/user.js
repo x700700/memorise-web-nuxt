@@ -1,4 +1,4 @@
-import { Axios } from '../global/myAxios';
+import Axios from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
@@ -7,6 +7,7 @@ export const state = () => ({
   info: null,
   error: null,
   authChecked: false,
+  jwtToken: null,
 });
 
 const setProps = (state, res, fetch) => {
@@ -22,21 +23,27 @@ export const mutations = {
     setProps(state, null, true);
   },
   loginSucceed(state, res) {
-    setProps(state, res, false);
+    setProps(state, res.user, false);
+    this.jwtToken = res.token;
+    // Todo - set jwt into local storage
+    Axios.setToken(this.jwtToken);
   },
   loginError(state, err) {
     setProps(state, err, false);
+    // Todo - clear
   },
   authSucceed(state, res) {
-    setProps(state, res, false);
+    setProps(state, res.user, false);
     state.authChecked = true;
   },
   authError(state, err) {
     setProps(state, err, false);
     state.authChecked = true;
   },
-  logoutSucceed(state, res) {
+  logoutSucceed(state) {
     setProps(state, null, false);
+    this.jwtToken = null;
+    // Todo - clear
   },
 };
 
@@ -44,7 +51,7 @@ export const actions = {
   login({ commit }, loginBody) {
     console.warn('login action:', loginBody);
     commit('requestTrans');
-    Axios(this.$axios.post, '/api/auth/login', loginBody,
+    Axios.call(this.$axios.post, '/api/auth/login', loginBody,
       (resp) => {
         commit('loginSucceed', resp);
       },
@@ -59,7 +66,7 @@ export const actions = {
   auth({ commit }) {
     console.warn('auth check...');
     commit('requestTrans');
-    Axios(this.$axios.get, '/api/auth/check', null,
+    Axios.call(this.$axios.get, '/api/auth/check', null,
       (resp) => {
         commit('authSucceed', resp);
       },
@@ -74,9 +81,9 @@ export const actions = {
   logout({ commit }) {
     console.warn('logout action:');
     commit('requestTrans');
-    Axios(this.$axios.get, '/api/auth/logout', null,
+    Axios.call(this.$axios.get, '/api/auth/logout', null,
       (resp) => {
-        commit('logoutSucceed', resp);
+        commit('logoutSucceed');
       },
       (err) => {
         commit('loginError', { errorMessage: err.data.message || err.data });
