@@ -6,11 +6,7 @@
         <div class="title">
           <p>Sign-In memoRise</p>
         </div>
-        <div @click="googleLoginPressed">
-          <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">
-            <p>Login via Google</p>
-          </GoogleLogin>
-        </div>
+        <LoginGoogle :pressed="googleLoginPressed" :ended="googleLoginEnded"/>
         <p>Or:</p>
         <br />
         <div class="inputs-container">
@@ -65,12 +61,11 @@
 
 <script>
 import $ from 'jquery';
-import GoogleLogin from 'vue-google-login';
-import consts from '../../global/consts';
+import LoginGoogle from './LoginGoogle';
 
 export default {
   components: {
-    GoogleLogin,
+    LoginGoogle,
   },
   props: {
   },
@@ -80,9 +75,6 @@ export default {
     password: undefined,
     loginError: null,
     gloginPressed: false,
-    gloginParms: {
-      client_id: consts.GOOGLE_CLIENT_ID,
-    },
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
       length: len => v => (v || '').length >= len || `Minimum ${len} characters required`,
@@ -125,14 +117,7 @@ export default {
       this.gloginPressed = true;
       this.$refs.form.reset();
     },
-    onGloginSuccess(googleUser) {
-      const token = googleUser.getAuthResponse().id_token;
-      // console.warn('token=', token);
-      this.$store.dispatch('user/loginGoogle', token);
-
-      this.gloginPressed = false;
-    },
-    onGloginFailure() {
+    googleLoginEnded() {
       this.gloginPressed = false;
     },
   },
