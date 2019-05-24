@@ -40,6 +40,22 @@ export default {
       ]
     }
   },
+  data: () => ({
+    routedToLogin: false,
+  }),
+  computed: {
+    authChecked() {
+      return this.$store.state.user.authChecked;
+    },
+  },
+  watch: {
+    authChecked() {
+      if (!this.routedToLogin && this.$store.state.user.authChecked && !this.$store.state.user.isLoggedIn) {
+        this.routedToLogin = true;
+        this.$router.push('/login');
+      }
+    },
+  },
   beforeMount() {
     Axios.initAxios(this.$axios, this.$router);
     const jwtToken = getData('jwtToken');
