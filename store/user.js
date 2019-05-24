@@ -62,10 +62,6 @@ export const actions = {
         commit('loginSucceed', resp);
       },
       (err) => {
-        const authCodes = [400, 401];
-        if (authCodes.includes(err.status)) {
-          console.warn('Unauthorized');
-        }
         commit('loginError', { errorMessage: err.data.message || err.data });
       });
   },
@@ -76,12 +72,8 @@ export const actions = {
       (resp) => {
         commit('authSucceed', resp);
       },
-      (err) => {
-        const authCodes = [400, 401];
-        if (authCodes.includes(err.status)) {
-          console.warn('Unauthorized');
-        }
-        commit('authError'); // , { errorMessage: err.data.message || err.data });
+      () => {
+        commit('authError');
       });
   },
   loginGoogle({ commit }, idToken) {
@@ -89,16 +81,13 @@ export const actions = {
     commit('requestTrans');
 
     // Axios.call(this.$axios.get, `/api/auth/google?access_token=${idToken}`, null,
+    // Todo - Send token properly to passport-google-token but doesn't work with passport-google-oauth2
     Axios.call(this.$axios.post, '/api/auth/google', { access_token: idToken },
       (resp) => {
         commit('loginSucceed', resp);
       },
       (err) => {
-        const authCodes = [400, 401];
-        if (authCodes.includes(err.status)) {
-          console.warn('Unauthorized');
-        }
-        commit('authError'); // , { errorMessage: err.data.message || err.data });
+        commit('authError', { errorMessage: err.data.message || err.data });
       });
   },
   logout({ commit }) {

@@ -19,7 +19,7 @@ class axios {
     }
     return axiosFn(address, isGet ? headers : body, isGet ? undefined : headers)
       .then(function (response) {
-        console.warn('axios response --->', response);
+        // console.warn('axios response --->', response);
         if (response.status === 200) {
           onSuccess && onSuccess(response.data);
         } else {
@@ -28,6 +28,9 @@ class axios {
       })
       .catch(function (err) {
         console.warn('axios error ===>', err);
+        if ([400, 401].includes(err.status)) {
+          // console.warn('Unauthorized');
+        }
         onError && onError((err && err.response) || err || 'unknown network error');
       });
   };
