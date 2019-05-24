@@ -64,7 +64,7 @@ export const actions = {
       (err) => {
         const authCodes = [400, 401];
         if (authCodes.includes(err.status)) {
-          console.warn('NOT Authorized');
+          console.warn('Unauthorized');
         }
         commit('loginError', { errorMessage: err.data.message || err.data });
       });
@@ -79,7 +79,7 @@ export const actions = {
       (err) => {
         const authCodes = [400, 401];
         if (authCodes.includes(err.status)) {
-          console.warn('NOT Authorized');
+          console.warn('Unauthorized');
         }
         commit('authError'); // , { errorMessage: err.data.message || err.data });
       });
@@ -96,7 +96,7 @@ export const actions = {
       (err) => {
         const authCodes = [400, 401];
         if (authCodes.includes(err.status)) {
-          console.warn('NOT Authorized');
+          console.warn('Unauthorized');
         }
         commit('authError'); // , { errorMessage: err.data.message || err.data });
       });

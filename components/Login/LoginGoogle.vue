@@ -1,7 +1,7 @@
 <template>
   <div class="login-google-container">
     <div @click="pressed">
-      <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">
+      <GoogleLogin :params="gloginParms" :on-success="onGloginSuccess" :on-failure="onGloginFailure">
         <p>Login via Google</p>
       </GoogleLogin>
     </div>
