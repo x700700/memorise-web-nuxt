@@ -1,50 +1,15 @@
 <template>
   <div class="trainings-list-container">
-    <p>Trainings List {{ list }}</p>
-    <br />
-    <br />
-    <div @click="btnClicked">
-      <span>Open Modal</span>
+    <div v-for="training in list" :key="training.id">
+      <p>{{ training.name }}</p>
     </div>
-    <br />
-    <p>bbb</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p><p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p><p>a</p><p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>a</p>
-    <p>bbb</p>
-    <p>a</p>
-
-
-
     <MyModal name="meo-modal" header="Meo Modalo" />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import _ from 'lodash';
 import MyModal from '../tools/MyModal';
 
 export default {
@@ -52,14 +17,17 @@ export default {
     MyModal,
   },
   computed: mapState({
-    list: state => state.trainings.list,
+    list: state => _.values(state.trainings.dictionary),
   }),
+  beforeMount() {
+    this.$store.dispatch('trainings/loadTrainings');
+  },
   methods: {
-    btnClicked() {
-      // eslint-disable-next-line no-console
-      console.warn('clicked');
+    /*
+    openModal() {
       this.$modal.show('meo-modal');
     },
+     */
   },
 }
 </script>

@@ -3,10 +3,10 @@ import Axios from '../global/myAxios';
 
 export const state = () => ({
   duringFetch: false,
+  error: null,
   isLoggedIn: false,
   nickName: null,
   info: null,
-  error: null,
   authChecked: false,
   jwtToken: null,
 });
@@ -26,6 +26,10 @@ const resetJwtToken = (store) => {
 };
 
 export const mutations = {
+  setError(state, err) {
+    console.error('setError: ', err);
+    state.error = err;
+  },
   requestTrans(state) {
     setProps(state, null, true);
   },

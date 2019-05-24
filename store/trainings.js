@@ -1,11 +1,34 @@
+import Axios from '../global/myAxios';
 
 export const state = () => ({
-  list: ['a', 'b'],
+  duringFetch: false,
+  dictionary: null,
 });
 
 export const mutations = {
-  set(state, arr) {
-    state.list = arr;
-    console.warn('mutation: ', arr);
-  }
+  requestTrans(state) {
+    state.duringFetch = true;
+  },
+  getSucceed(state, dict) {
+    console.log('====>', dict);
+    state.dictionary = dict;
+    state.duringFetch = false;
+  },
+  getError(state) {
+    state.duringFetch = false;
+  },
+};
+
+export const actions = {
+  loadTrainings({ commit }) {
+    commit('requestTrans');
+    Axios.call(this.$axios.get, '/api/trainings', null,
+      (resp) => {
+        commit('getSucceed', resp);
+      },
+      (err) => {
+        commit('getError');
+        commit('user/setError', err.data.message || err.data, { root: true });
+      });
+  },
 };
