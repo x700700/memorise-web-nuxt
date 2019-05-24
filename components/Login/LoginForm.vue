@@ -6,9 +6,11 @@
         <div class="title">
           <p>Sign-In memoRise</p>
         </div>
-        <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">
-          <p>Login via Google</p>
-        </GoogleLogin>
+        <div @click="googleLoginPressed">
+          <GoogleLogin :params="gloginParms" :onSuccess="onGloginSuccess" :onFailure="onGloginFailure">
+            <p>Login via Google</p>
+          </GoogleLogin>
+        </div>
         <p>Or:</p>
         <br />
         <div class="inputs-container">
@@ -22,6 +24,7 @@
                 v-model="username"
                 :rules="[rules.required]"
                 :error-messages="loginError"
+                :disabled="gloginPressed"
                 class="input-field"
                 box
                 clearable
@@ -32,6 +35,7 @@
             <v-text-field
                 v-model="password"
                 :rules="[rules.required, rules.length(1)]"
+                :disabled="gloginPressed"
                 class="input-field"
                 box
                 clearable
@@ -62,6 +66,7 @@
 <script>
 import $ from 'jquery';
 import GoogleLogin from 'vue-google-login';
+import consts from '../../global/consts';
 
 export default {
   components: {
@@ -74,9 +79,9 @@ export default {
     username: undefined,
     password: undefined,
     loginError: null,
+    gloginPressed: false,
     gloginParms: {
-      client_id: '370816663715-toqg1i2f2kfif0jckraja1hrfka8plmb.apps.googleusercontent.com',
-      // client secret: sSHa5DYYx31gFowoGZf37yFl
+      client_id: consts.GOOGLE_CLIENT_ID,
     },
     rules: {
       email: v => (v || '').match(/@/) || 'Please enter a valid email',
@@ -116,13 +121,19 @@ export default {
       this.$refs.form.reset();
       this.$store.dispatch('user/login', loginBody);
     },
-    onGloginSuccess() {
-      console.warn('hey');
-      return true;
+    googleLoginPressed() {
+      this.gloginPressed = true;
+      this.$refs.form.reset();
+    },
+    onGloginSuccess(googleUser) {
+      const token = googleUser.getAuthResponse().id_token;
+      // console.warn('token=', token);
+      this.$store.dispatch('user/loginGoogle', token);
+
+      this.gloginPressed = false;
     },
     onGloginFailure() {
-      console.warn('bas');
-      return true;
+      this.gloginPressed = false;
     },
   },
 }

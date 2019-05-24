@@ -27,8 +27,8 @@ class axios {
         }
       })
       .catch(function (err) {
-        console.warn('axios error ===>', err.response);
-        onError && onError(err.response);
+        console.warn('axios error ===>', err);
+        onError && onError((err && err.response) || err || 'unknown network error');
       });
   };
 }

@@ -84,6 +84,23 @@ export const actions = {
         commit('authError'); // , { errorMessage: err.data.message || err.data });
       });
   },
+  loginGoogle({ commit }, idToken) {
+    console.warn('login Google...');
+    commit('requestTrans');
+
+    // Axios.call(this.$axios.get, `/api/auth/google?access_token=${idToken}`, null,
+    Axios.call(this.$axios.post, '/api/auth/google', { access_token: idToken },
+      (resp) => {
+        commit('loginSucceed', resp);
+      },
+      (err) => {
+        const authCodes = [400, 401];
+        if (authCodes.includes(err.status)) {
+          console.warn('NOT Authorized');
+        }
+        commit('authError'); // , { errorMessage: err.data.message || err.data });
+      });
+  },
   logout({ commit }) {
     console.warn('logout action:');
     commit('requestTrans');
