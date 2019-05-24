@@ -17,8 +17,9 @@ export default {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     script: [
-      { src: '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' },
-      { src: 'https://apis.google.com/js/client:platform.js?onload=start' },
+      // Todo - Google-Login scripts
+      // { src: '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' },
+      // { src: 'https://apis.google.com/js/client:platform.js?onload=start' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
