@@ -6,7 +6,7 @@
         <div class="title">
           <p>Sign-In memoRise</p>
         </div>
-        <LoginGoogle :pressed="googleLoginPressed" :ended="googleLoginEnded"/>
+        <!-- LoginGoogle :pressed="googleLoginPressed" :ended="googleLoginEnded"/ -->
         <p>Or:</p>
         <br />
         <div class="inputs-container">
@@ -48,7 +48,7 @@
               color="deep-purple lighten-4"
               class="btn-login"
               @click="login"
-          >Login
+          >Sign-In
           </v-btn>
         </div>
         <div class="buttons-containr">
@@ -61,11 +61,11 @@
 
 <script>
 import $ from 'jquery';
-import LoginGoogle from './LoginGoogle';
+// import LoginGoogle from './LoginGoogle';
 
 export default {
   components: {
-    LoginGoogle,
+    // LoginGoogle,
   },
   props: {
   },
@@ -113,6 +113,7 @@ export default {
       this.$refs.form.reset();
       this.$store.dispatch('user/login', loginBody);
     },
+    /*
     googleLoginPressed() {
       this.gloginPressed = true;
       this.$refs.form.reset();
@@ -120,6 +121,7 @@ export default {
     googleLoginEnded() {
       this.gloginPressed = false;
     },
+    */
   },
 }
 </script>
