@@ -1,8 +1,8 @@
 
 class axios {
-  init(axios, getFn) {
+  initAxios(axios, router) {
     this.axios = axios;
-    this.getFn = getFn;
+    this.router = router;
   }
 
   setToken(jwtToken) {
@@ -14,9 +14,10 @@ class axios {
     // console.warn('headers ---> ', headers);
 
     let isGet = false;
-    if (axiosFn === this.getFn) {
+    if (axiosFn === this.axios.get) {
       isGet = true;
     }
+    // const self = this;
     return axiosFn(address, isGet ? headers : body, isGet ? undefined : headers)
       .then(function (response) {
         // console.warn('axios response --->', response);
@@ -27,9 +28,10 @@ class axios {
         }
       })
       .catch(function (err) {
-        console.warn('axios error ===>', err);
-        if ([400, 401].includes(err.status)) {
+        console.debug('axios error ===>', err);
+        if ([400, 401].includes(err.response.status)) {
           // console.warn('Unauthorized');
+          // self.router.push('/login');
         }
         onError && onError((err && err.response) || err || 'unknown network error');
       });

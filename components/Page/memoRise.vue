@@ -41,7 +41,7 @@ export default {
     }
   },
   beforeMount() {
-    Axios.init(this.$axios, this.$axios.get);
+    Axios.initAxios(this.$axios, this.$router);
     const jwtToken = getData('jwtToken');
     Axios.setToken(jwtToken);
     this.$store.dispatch('user/auth');
