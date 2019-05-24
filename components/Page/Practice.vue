@@ -91,6 +91,11 @@ export default {
     width: fit-content;
     margin: 0 auto;
     background-color: white;
+    transform: scale(1.15) translateY(2rem);
+
+    @media (max-width: @max-mobile-width) {
+      transform: scale(1) translateY(0);
+    }
 
     .practice-playground {
       margin-top: 2rem;
