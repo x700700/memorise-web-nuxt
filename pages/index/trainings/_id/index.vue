@@ -3,10 +3,15 @@
 </template>
 
 <script>
-import EditTraining from '../../../../components/Page/EditTraining';
+import EditTraining from '../../../../components/Page/TrainingEdit';
+import { validateId } from '~/global/validations';
+
 export default {
   components: {
     EditTraining
+  },
+  validate({ params }) {
+    return validateId(params.id);
   },
 }
 </script>

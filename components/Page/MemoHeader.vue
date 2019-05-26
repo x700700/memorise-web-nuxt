@@ -20,12 +20,12 @@
         </NuxtLink>
       </div>
       <div>
-        <NuxtLink to="/trainings/123">
+        <NuxtLink to="/trainings/ffffffffffffffffffffffff">
           Edit
         </NuxtLink>
       </div>
       <div>
-        <NuxtLink to="/trainings/123/practice">
+        <NuxtLink to="/trainings/ffffffffffffffffffffffff/practice">
           Practice
         </NuxtLink>
       </div>

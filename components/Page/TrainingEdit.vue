@@ -6,19 +6,10 @@
 
 <script>
 import { mapState } from 'vuex';
+// import { validateId } from '../../global/validations';
 
 export default {
   components: {
-  },
-  validate({ params }) {
-    console.warn('id length=', params.id.length);
-    const looksLikeId = params.id.match(/^\w[^ _-]+$/g);
-    if (params.id && params.id.length === 24 && looksLikeId) {
-      return true;
-    } else {
-      console.error('wrong id');
-      return false;
-    }
   },
   computed: mapState({
     id() {

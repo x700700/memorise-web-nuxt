@@ -1,6 +1,5 @@
 <template>
   <div class="practice-container">
-    <!--    <p>Practice Training id: {{ id }}</p>-->
     <div class="practice-playground">
       <div class="practice-cloumn">
         <div class="title">
@@ -35,10 +34,6 @@ export default {
     Card
   },
   props: {
-    id: {
-      type: String,
-      required: true,
-    },
   },
   data: () => ({
     cardNumber: 0,
@@ -48,6 +43,9 @@ export default {
     cardsPack: null,
   }),
   computed: {
+    id() {
+      return this.$route.params.id;
+    },
     q() {
       return this.cardsPack.top().q;
     },
@@ -88,6 +86,7 @@ export default {
   @import '../../global/vars';
 
   .practice-container {
+    font-size: 22px;
     width: fit-content;
     margin: 0 auto;
     background-color: white;
