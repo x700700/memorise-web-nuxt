@@ -6,7 +6,6 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { validateId } from '../../global/validations';
 
 export default {
   components: {

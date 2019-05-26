@@ -12,8 +12,13 @@ export default {
   components: {
     Practice,
   },
-  validate({ params }) {
-    return validateId(params.id);
+  beforeMount() {
+    if (!validateId(this.$route.params.id)) {
+      console.error('wrong url. redirecting.');
+      this.$router.push('/trainings');
+    }
+  },
+  methods: {
   },
 }
 </script>

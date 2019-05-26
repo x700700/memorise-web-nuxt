@@ -1,17 +1,20 @@
 <template>
-  <EditTraining />
+  <TrainingEdit />
 </template>
 
 <script>
-import EditTraining from '../../../../components/Page/TrainingEdit';
+import TrainingEdit from '../../../../components/Page/TrainingEdit';
 import { validateId } from '~/global/validations';
 
 export default {
   components: {
-    EditTraining
+    TrainingEdit
   },
-  validate({ params }) {
-    return validateId(params.id);
+  beforeMount() {
+    if (!validateId(this.$route.params.id)) {
+      console.error('wrong url. redirecting.');
+      this.$router.push('/trainings');
+    }
   },
 }
 </script>
