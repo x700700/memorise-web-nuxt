@@ -7,7 +7,14 @@
 <script>
 export default {
   validate({ params }) {
-    return !isNaN(+params.id);
+    console.warn('id length=', params.id.length);
+    const looksLikeId = params.id.match(/^\w[^ _-]+$/g);
+    if (params.id && params.id.length === 24 && looksLikeId) {
+      return true;
+    } else {
+      console.error('wrong id');
+      return false;
+    }
   },
   computed: {
     id() {
