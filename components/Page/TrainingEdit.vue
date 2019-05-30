@@ -1,6 +1,5 @@
 <template>
   <div class="training-edit-container">
-    Edit Training id: {{ id }}
     <br />
     <div v-for="ex in exercises" :key="ex.id">
       <p>{{ ex.question }} - {{ ex.answer }}</p>
@@ -23,7 +22,7 @@ export default {
     exercises: state => state.training.editedTraining && state.training.editedTraining.exercises && _.values(state.training.editedTraining.exercises),
   }),
   beforeMount() {
-    this.$store.dispatch('training/loadEditedTraining', { id: this.id });
+    this.$store.dispatch('training/loadTraining', { id: this.id, edited: true });
   },
   methods: {
   },
