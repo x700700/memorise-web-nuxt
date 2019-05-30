@@ -1,11 +1,16 @@
 <template>
   <div class="training-edit-container">
     Edit Training id: {{ id }}
+    <br />
+    <div v-for="ex in exercises" :key="ex.id">
+      <p>{{ ex.question }} - {{ ex.answer }}</p>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import _ from 'lodash';
 
 export default {
   components: {
@@ -13,11 +18,12 @@ export default {
   computed: mapState({
     id() {
       return this.$route.params.id;
-    }
-    // trainingsList: state => _.values(state.trainings.dictionary),
+    },
+    training: state => state.training.editedTraining,
+    exercises: state => state.training.editedTraining && state.training.editedTraining.exercises && _.values(state.training.editedTraining.exercises),
   }),
   beforeMount() {
-    // this.$store.dispatch('trainings/loadTrainings');
+    this.$store.dispatch('training/loadEditedTraining', { id: this.id });
   },
   methods: {
   },

@@ -10,7 +10,6 @@ export const mutations = {
     state.duringFetch = true;
   },
   getSucceed(state, dict) {
-    console.log('====>', dict);
     state.dictionary = dict;
     state.duringFetch = false;
   },
