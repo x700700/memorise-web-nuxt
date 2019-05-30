@@ -52,6 +52,7 @@ export default {
     authChecked() {
       if (!this.routedToLogin && this.$store.state.user.authChecked && !this.$store.state.user.isLoggedIn) {
         this.routedToLogin = true;
+        console.error('Not signed in - routed to /login');
         this.$router.push('/login');
       }
     },

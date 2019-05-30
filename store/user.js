@@ -12,8 +12,9 @@ export const state = () => ({
 });
 
 const setProps = (state, res, fetch) => {
-  state.isLoggedIn = (res && res.nickName) || false;
-  state.nickName = (res && res.nickName) || null;
+  state.nickName = (res && (res.nickName || res.name)) || null;
+  state.isLoggedIn = state.nickName || false;
+  // console.warn(`---> nickName=[${state.nickName}] isLoggedIn=[${state.isLoggedIn}]`);
   state.info = (res && res.info) || null;
   state.duringFetch = fetch;
   state.error = (res && res.errorMessage) || null;
@@ -44,6 +45,7 @@ export const mutations = {
     resetJwtToken(this);
   },
   authSucceed(state, res) {
+    // console.warn('====> /auth result:', res);
     setProps(state, res, false);
     state.authChecked = true;
   },
