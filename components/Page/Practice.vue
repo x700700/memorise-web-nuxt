@@ -1,6 +1,6 @@
 <template>
   <div class="practice-container">
-    <div class="practice-playground">
+    <div class="practice-playground" v-if="loaded">
       <div class="practice-cloumn">
         <div class="title">
           <p>Animals Vocabulary</p>
@@ -41,22 +41,35 @@ export default {
     nextCardTransitionWidth: false,
     nextCardTransitionFull: false,
     cardsPack: null,
+    loaded: false,
   }),
   computed: {
     id() {
       return this.$route.params.id;
     },
     q() {
-      return this.cardsPack.top().q;
+      return this.cardsPack && this.cardsPack.top() && this.cardsPack.top().question;
     },
     a() {
-      return this.cardsPack.top().a;
+      return this.cardsPack && this.cardsPack.top() && this.cardsPack.top().answer;
+    },
+    training() {
+      return this.$store.state.training.playedTraining;
+    },
+  },
+  watch: {
+    training() {
+      const trn = this.$store.state.training.playedTraining;
+      if (!this.loaded && trn) {
+        console.warn('hi');
+        this.cardsPack = new cardsPack(trn);
+        this.loaded = true;
+        // Todo Post-MVP - Make 5 second tooltip on the card - 'Click me to flip side' (instead of rotate button)
+      }
     },
   },
   beforeMount() {
-    this.cardsPack = new cardsPack();
-
-    // Todo - Make 5 second tooltip on the card - 'Click me to flip side' (instead of rotate button)
+    this.$store.dispatch('training/loadTraining', { id: this.id, played: true });
   },
   methods: {
     rotateCard() {
@@ -67,7 +80,7 @@ export default {
       this.nextCardTransitionWidth = true;
       this.cardFront = true;
 
-      // Todo - JQuery Slide - get cb when css transition
+      // Todo Post-MVP - JQuery Slide - get cb when css transition
       // make width css transition work
       setTimeout(() => {
         this.cardNumber += 1;

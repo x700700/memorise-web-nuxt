@@ -5,6 +5,9 @@
         <div class="button" @click="editTraining(training)">
           Edit
         </div>
+        <div class="button" @click="playTraining(training)">
+          Play
+        </div>
         <p>{{ training.name }}</p>
       </div>
     </div>
@@ -30,7 +33,12 @@ export default {
   methods: {
     editTraining(training) {
       const url = `/trainings/${training.id}`;
-      console.warn('redirect to: exercise', url);
+      console.debug('redirect to: ', url);
+      this.$router.push(url);
+    },
+    playTraining(training) {
+      const url = `/trainings/${training.id}/practice`;
+      console.debug('redirect to: ', url);
       this.$router.push(url);
     },
     /*

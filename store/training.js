@@ -36,7 +36,7 @@ export const mutations = {
 
 export const actions = {
   loadTraining({ commit }, { id, edited, played }) {
-    console.warn('loadEditedTraining action id = ', id);
+    console.warn('loadTraining action id = ', id);
     commit('requestTrans');
     Axios.call(this.$axios.get, `/api/trainings/${id}`, null,
       (resp) => {

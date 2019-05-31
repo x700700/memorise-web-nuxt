@@ -1,11 +1,13 @@
 import _ from 'lodash';
-import { cardsPackStub } from '../stubs/cardsPack';
+// import { cardsPackStub } from '../stubs/cardsPack';
 
 export default class cardsPack {
 
-  constructor() {
-    this.initialPack = _.cloneDeep(cardsPackStub);
-    this.currentPack = _.cloneDeep(this.initialPack.filter(x => x.q && x.a));
+  constructor(training) {
+    const exercises = training && training.exercises && _.values(training.exercises);
+    // console.warn('cardsPack - exercises = ', exercises);
+    this.initialPack = _.cloneDeep(exercises);
+    this.currentPack = _.cloneDeep(this.initialPack.filter(x => x.question && x.answer));
     this.nextPack = [];
     this.validate();
   }
